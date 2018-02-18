@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+
+.navbar-toggler-icon {
+	cursor: pointer;
+}
+
+.article.container {
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.article-deck {
+	margin: 1em 0;
+}
+
+.article-card {
+	border: none;
+
+	.card-body {
+		background-color: $color-anred;
+
+		a {
+			color: #fff;
+		}
+	}
+
+	.card-footer {
+		border-top: none;
+	}
+
+	.comments-counter {
+		font-size: .85rem;
+	}
+}
+
+h3.title {
+	margin: 0 15px;
+	padding: 0;
+	border-bottom: solid 3px $color-anred;
+}
+
+.category-featured {
+	margin: 1rem 0;
+
+	.footer {
+		padding: 0.75rem 1.25rem;
+		color: #6c757d;
+		background-color: rgba(0, 0, 0, 0.03);
+	}
+}
+
+iframe {
+	width: 100%;
+}
+
+.embed-responsive-anred {
+	&::before {
+		padding-top: percentage(480 / 640);
+	}
+}
+
+#videoModal {
+	z-index: 9999;
+}
+
+/*
+** Search
+*/
+
+.search-results {
+	margin-top: 60px;
+	list-style: none;
+
+	.result {
+		h5 {
+			margin-bottom: 0;
+		}
+
+		.date {
+			font-size: .8em;
+			margin-bottom: .5em;
+		}
+
+		h5, .date, p {
+			padding-left: 115px;
+		}
+
+		img {
+			float: left;
+		}
+
+		margin-bottom: 2em;
+	}
+}
+
+/*
+** Sidebar
+*/
+
+.sidebar {
+	padding-left: 0;
+}
+
+.convocatoria {
+	&.container {
+		margin-top: 60px;
+	}
+}
+
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

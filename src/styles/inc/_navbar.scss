@@ -1,0 +1,99 @@
+.sticky-navbar {
+	top: 0;
+	padding: 0rem 1rem; 
+	z-index: 9997;
+	width: 100%;
+	position: fixed;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
+	.logo {
+		height: 50px;
+		width: 150px;
+	}
+
+	.navbar-toggler {
+		border: none;
+	}
+
+	.search-form {
+		padding: 0.5em 0;
+	}
+}
+
+.navbar-primary {
+	min-width: 250px;
+	max-width: 250px;
+	height: 100vh;
+	position: fixed;
+
+	top: 0;
+	left: -260px;
+
+	z-index: 9999;
+
+	transition: all 0.3s;
+	overflow-y: hidden;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
+	background-color: #333;
+	
+	&.active {
+		left: 0px;
+	}
+
+	.menu {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.menu-item {
+		line-height: 3em;
+		padding-left: 1em;
+
+		a {
+			display: block;
+			width: 100%;
+			color: #fff;
+			padding-left: 1em;
+			background-color: #333;
+		}
+	}
+
+	.current-menu-item {
+		background-color: $color-anred;
+
+		a {
+			font-weight: bold;
+		}
+	}
+
+	.navbar-brand {
+		text-align: center;
+		margin-right: 0;
+	}
+
+	.logo {
+		height: auto;
+		width: 95%;
+	}
+}
+
+.overlay {
+	position: fixed;
+	display: none;
+
+	height: 100vh;
+	width: 100vw;
+
+	top: 0;
+	left: 0;
+
+	background-color: black;
+	opacity: 0.7;
+	
+	z-index: 9998;
+}
+
+.btn-expand-sidebar {
+	color: rgba(0, 0, 0, 0.5);
+}
