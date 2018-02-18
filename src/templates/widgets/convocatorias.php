@@ -16,7 +16,7 @@ class ANRed_Convocatorias extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$query = new WP_Query( [
+		$query = new WP_Query( array(
 			'posts_per_page' => $instance['count'],
 			'post_type' => 'convocatoria',
 			'orderby' => 'meta_value',
@@ -25,7 +25,7 @@ class ANRed_Convocatorias extends WP_Widget {
 			'order' => 'ASC',
 			'suppress_filters' => true,
 			'post_status' => 'publish'
-		] );
+		) );
 
 		if ( $query->have_posts() ) {
 			echo $args['before_widget'];

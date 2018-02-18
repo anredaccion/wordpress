@@ -16,7 +16,7 @@ class ANRed_Content_Tag_2_Cols extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$query = new WP_Query( [
+		$query = new WP_Query( array(
 			'posts_per_page' => $instance['count'],
 			'tag_id' => $instance['tag'],
 			'orderby' => 'date',
@@ -25,7 +25,7 @@ class ANRed_Content_Tag_2_Cols extends WP_Widget {
 			'suppress_filters' => true,
 			'post_status' => 'publish',
 			'post__not_in' => Deduplicator::get()
-		] );
+		) );
 
 		if ( $query->have_posts() ) {
 			echo $args['before_widget'];
