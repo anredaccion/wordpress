@@ -71,7 +71,7 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 	</p>
 	<p>
 		<label for="<?php echo $this->get_field_id( 'tag' ); ?>">Categoría</label>
-		<?php wp_dropdown_categories( [
+		<?php wp_dropdown_categories( array(
 			'name' => $this->get_field_name( 'tag' ),
 			'id' => $this->get_field_id( 'tag' ),
 			'selected' => $args['tag'],
@@ -79,7 +79,7 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 			'taxonomy' => 'post_tag',
 			'orderby' => 'name',
 			'show_count' => 1
-		] ); ?>
+		) ); ?>
 	</p>
 	<p>
 		<label for="<?php echo $this->get_field_id( 'count' ); ?>">Cantidad de artículos</label>

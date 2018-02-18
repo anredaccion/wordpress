@@ -1,40 +1,40 @@
 <?php
 
 class ANRed_Social_Follow extends WP_Widget {
-	private $list = [
-		'facebook' => [
+	private $list = array(
+		'facebook' => array(
 			'name' => 'Facebook',
 			'icon' => 'fa-facebook',
 			'mobile' => 'fb://page/{id}',
 			'desktop' => 'https://www.facebook.com/{id}'
-		],
-		'twitter' => [
+		),
+		'twitter' => array(
 			'name' => 'Twitter',
 			'icon' => 'fa-twitter',
 			'mobile' => 'https://twitter.com/{id}',
 			'desktop' => 'https://twitter.com/{id}'
-		],
-		'instagram' => [
+		),
+		'instagram' => array(
 			'name' => 'Instagram',
 			'icon' => 'fa-instagram',
 			'mobile' => 'instagram://user?username={id}',
 			'desktop' => 'https://www.instagram.com/{id}'
-		],
-		'telegram' => [
+		),
+		'telegram' => array(
 			'name' => 'Telegram',
 			'icon' => 'fa-telegram',
 			'mobile' => 'tg://resolve?domain={id}',
 			'desktop' => 'https://web.telegram.org/#/im?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3D{id}'
 
-		],
-		'youtube' => [
+		),
+		'youtube' => array(
 			'name' => 'YouTube',
 			'icon' => 'fa-youtube-square',
 			'mobile' => 'https://www.youtube.com/user/{id}',
 			'desktop' => 'https://www.youtube.com/user/{id}'
-		]
-	];
- 
+		)
+	);
+
 	function __construct() {
 		parent::__construct(
 			'anred_social_follow',
