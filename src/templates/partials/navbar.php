@@ -15,7 +15,7 @@ $logo = wp_get_attachment_image_src( $custom_logo_id , 'medium' );
 <div class="navbar-primary">
 	<a class="navbar-brand" href="<?php echo get_site_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/images/logo-invertido.png" class="logo"></a>
 	<?php if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'primary_navigation' ] ) )
-		wp_nav_menu(['theme_location' => 'primary_navigation']);
+		wp_nav_menu( array( 'theme_location' => 'primary_navigation' ) );
 	?>
 	<div class="nav-link ml-auto"><?php dynamic_sidebar( 'header-social' ); ?></div>
 	<br>

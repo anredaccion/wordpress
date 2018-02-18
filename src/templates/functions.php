@@ -7,13 +7,13 @@ function anred_add_theme_scripts() {
 
 	wp_deregister_script( 'jquery' );
 
-	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/jquery.js', [], false, true );
-	wp_enqueue_script( 'popper', get_template_directory_uri() . '/vendor/popper.js/popper.js', [], false, true );
-	wp_enqueue_script( 'bootstrap_js', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.js', [], false, true );
-	wp_enqueue_script( 'scrollbar', get_template_directory_uri() . '/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js', [], false, true );
-	wp_enqueue_script( 'hammer', get_template_directory_uri() . '/vendor/hammerjs/hammer.js', [], false, true );
-	wp_enqueue_script( 'jquery-hammer', get_template_directory_uri() . '/vendor/jquery-hammerjs/jquery.hammer.js', [], false, true );
-	wp_enqueue_script( 'script', get_template_directory_uri() . '/scripts/anred.js', [], false, true );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/jquery.js', array(), false, true );
+	wp_enqueue_script( 'popper', get_template_directory_uri() . '/vendor/popper.js/popper.js', array(), false, true );
+	wp_enqueue_script( 'bootstrap_js', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.js', array(), false, true );
+	wp_enqueue_script( 'scrollbar', get_template_directory_uri() . '/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js', array(), false, true );
+	wp_enqueue_script( 'hammer', get_template_directory_uri() . '/vendor/hammerjs/hammer.js', array(), false, true );
+	wp_enqueue_script( 'jquery-hammer', get_template_directory_uri() . '/vendor/jquery-hammerjs/jquery.hammer.js', array(), false, true );
+	wp_enqueue_script( 'script', get_template_directory_uri() . '/scripts/anred.js', array(), false, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'anred_add_theme_scripts' );
@@ -23,61 +23,61 @@ add_action( 'wp_enqueue_scripts', 'anred_add_theme_scripts' );
 ** - Modularizar para mayor claridad
 */
 function anred_theme_setup() {
-	register_nav_menus([
+	register_nav_menus( array(
 		'primary_navigation' => 'Menú principal'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Página Principal - Contenido', 'anred'),
 		'id'            => 'content',
 		'before_widget' => '<div class="container-fluid">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="title">',
 		'after_title'   => '</h3>'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Página Principal - Barra Lateral', 'anred'),
 		'id'            => 'sidebar',
 		'before_widget' => '<div class="container-fluid widget">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="title">',
 		'after_title'   => '</h3>'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Categorias - Contenido', 'anred'),
 		'id'            => 'categories',
 		'before_widget' => '<div class="container categories">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="title">',
 		'after_title'   => '</h3>'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Etiquetas - Contenido', 'anred'),
 		'id'            => 'tags',
 		'before_widget' => '<div class="container tags">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="title">',
 		'after_title'   => '</h3>'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Artículos - Barra Lateral', 'anred'),
 		'id'            => 'article',
 		'before_widget' => '<div class="container-fluid widget">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="title">',
 		'after_title'   => '</h3>'
-	]);
+	) );
 
-	register_sidebar([
+	register_sidebar( array(
 		'name'          => __('Redes Sociales - Menú', 'anred'),
 		'id'            => 'header-social',
 		'before_widget' => '<section class="widget %1$s %2$s">',
 		'after_widget'  => '</section>'
-	]);
+	) );
 
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );

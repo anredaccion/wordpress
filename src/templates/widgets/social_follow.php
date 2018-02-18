@@ -57,7 +57,7 @@ class ANRed_Social_Follow extends WP_Widget {
 	}
 			 
 	public function form( $instance ) {
-		$defaults = [];
+		$defaults = array();
 		foreach($this->list as $id => $data)
 			$defaults[$id] = '';
 

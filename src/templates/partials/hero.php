@@ -1,12 +1,12 @@
 <?php
-$query = new WP_Query( [
+$query = new WP_Query( array(
 	'posts_per_page' => 5,
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'post_type' => 'post',
 	'suppress_filters' => true,
 	'post_status' => 'publish'
-] );
+) );
 ?>
 <div id="hero-news" class="carousel slide" data-ride="carousel" data-interval="5000">
 	<div class="carousel-inner">
