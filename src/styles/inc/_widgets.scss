@@ -9,9 +9,20 @@
 
 .convocatorias {
 	list-style: none;
-	padding-left: 15px;
-	font-size: 12px;
+	padding: 0 15px;
+	font-size: .85em;
 	color: #6c757d;
+	margin-top: .5em;
+	text-align: justify;
+
+	li:before {
+		content: "-";
+		padding-right: 6px;
+	}
+
+	li {
+		padding-bottom: .75em;
+	}
 }
 
 .widget {
