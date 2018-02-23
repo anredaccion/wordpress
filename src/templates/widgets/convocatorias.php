@@ -19,10 +19,24 @@ class ANRed_Convocatorias extends WP_Widget {
 		$query = new WP_Query( array(
 			'posts_per_page' => $instance['count'],
 			'post_type' => 'convocatoria',
-			'orderby' => 'meta_value',
-			'meta_key' => 'when-date',
-			'meta_type' => 'DATE',
-			'order' => 'ASC',
+			'meta_query' => array(
+				'relation' => 'AND',
+				'date_clause' => array(
+					'key' => 'when-date',
+					'type' => 'DATE',
+					'compare' => '>=',
+					'value' => date('Y-m-d')
+				),
+				'time_clause' => array(
+					'key' => 'when-time',
+					'type' => 'TIME',
+					'compare' => 'EXISTS'
+				)
+			),
+			'orderby' => array(
+				'date_clause' => 'DESC',
+				'time_clause' => 'DESC'
+			),
 			'suppress_filters' => true,
 			'post_status' => 'publish'
 		) );
