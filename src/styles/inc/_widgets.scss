@@ -25,6 +25,19 @@
 	}
 }
 
+.comunicados {
+	list-style: none;
+	padding: 0 15px;
+	font-size: .85em;
+	color: #6c757d;
+	margin-top: .5em;
+	text-align: justify;
+
+	li {
+		padding-bottom: .75em;
+	}
+}
+
 .widget {
 	margin-bottom: 2em;
 }
