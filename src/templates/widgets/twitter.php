@@ -17,6 +17,9 @@ class ANRed_Twitter extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
+		wp_enqueue_script( 'twitter', 'https://platform.twitter.com/widgets.js', array(), false, true );
+		
+
 		echo $args['before_widget'];
 ?>
 <a class="twitter-timeline" data-lang="es" data-height="<?php echo $instance['height'] ?>" href="https://twitter.com/<?php echo $instance['account'] ?>">Tweets by <?php echo $instance['account'] ?></a>

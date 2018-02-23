@@ -17,6 +17,8 @@ class ANRed_Facebook_Video extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
+		wp_enqueue_script( 'facebook', get_template_directory_uri() . '/scripts/facebook.js', array(), false, true );
+
 		echo $args['before_widget'];
 
 		if ( ! empty( $instance['title'] ) )
