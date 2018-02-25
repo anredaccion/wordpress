@@ -10,6 +10,7 @@
 footer {
 	background-color: #000;
 	padding-top: 1em;
+	box-shadow: -3px -3px 3px rgba(0, 0, 0, 0.2);
 
 	img {
 		max-width: 100%;
@@ -18,6 +19,7 @@ footer {
 
 	.widget {
 		margin: 0;
+		padding: 1em 0 2em 0;
 	}
 
 	.widgettitle {
@@ -38,6 +40,7 @@ footer {
 		height: 100%;
 
 		ul {
+			margin: 0 auto;
 			list-style: none;
 			padding-left: 0;
 		}
