@@ -1,14 +1,16 @@
 <?php
 $query = new WP_Query( array(
-	'posts_per_page' => 5,
+	'posts_per_page' => get_theme_mod( 'anred_hero_quantity', 5 ),
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'post_type' => 'post',
 	'suppress_filters' => true,
 	'post_status' => 'publish'
 ) );
+
+$interval = get_theme_mod('anred_hero_time', 5000)
 ?>
-<div id="hero-news" class="carousel slide" data-ride="carousel" data-interval="5000">
+<div id="hero-news" class="carousel slide" data-ride="carousel" data-interval="<?php echo $interval ?>">
 	<div class="carousel-inner">
 		<ol class="carousel-indicators">
 		<?php for($i = 0; $i < $query->post_count; $i++): ?>

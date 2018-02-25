@@ -1,5 +1,7 @@
 <?php
 
+include get_template_directory() . '/customizer.php';
+
 function anred_add_theme_scripts() {
 	wp_enqueue_style( 'bootstrap_css', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.css' );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/font-awesome.css' );
@@ -20,10 +22,6 @@ function anred_add_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'anred_add_theme_scripts' );
 
-/*
-** TODO:
-** - Modularizar para mayor claridad
-*/
 function anred_theme_setup() {
 	register_nav_menus( array(
 		'primary_navigation' => 'Menú principal'

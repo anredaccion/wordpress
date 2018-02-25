@@ -11,7 +11,8 @@
 <?php get_template_part( 'partials/navbar' ); ?>
 <div class="main header">
 <?php
-if ( is_front_page() && is_home() )
+$show_hero = get_theme_mod( 'anred_show_hero', true );
+if ( is_front_page() && is_home() && $show_hero)
 	get_template_part( 'partials/hero' );
 else
 	echo '&nbsp;';
