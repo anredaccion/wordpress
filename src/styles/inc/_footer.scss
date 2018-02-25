@@ -6,3 +6,53 @@
 	bottom: 0;
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.2);
 }
+
+footer {
+	background-color: #000;
+	padding-top: 1em;
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.widget {
+		margin: 0;
+	}
+
+	.widgettitle {
+		display: none;
+	}
+
+	.widget_tag_cloud, .widget_text {
+		text-align: center;
+		display: flex;
+		align-items: center; 
+		height: 100%;
+	}
+
+	.widget_categories {
+		text-align: center;
+		display: flex;
+		align-items: center; 
+		height: 100%;
+
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+	}
+
+	.details {
+		text-align: justify;
+		font-size: .7em;
+
+		h3 {
+			font-size: 1.1em;
+		}
+	}
+}
+
+.go-up {
+	margin-right: 15px;
+}

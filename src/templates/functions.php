@@ -81,6 +81,35 @@ function anred_theme_setup() {
 		'after_widget'  => '</section>'
 	) );
 
+	register_sidebar( array(
+		'name'          => __('Pié de página - Lugar 1', 'anred'),
+		'id'            => 'footer-1',
+		'before_widget' => '<section class="widget %1$s %2$s">',
+		'after_widget'  => '</section>'
+	) );
+
+	register_sidebar( array(
+		'name'          => __('Pié de página - Lugar 2', 'anred'),
+		'id'            => 'footer-2',
+		'before_widget' => '<section class="widget %1$s %2$s">',
+		'after_widget'  => '</section>'
+	) );
+
+	register_sidebar( array(
+		'name'          => __('Pié de página - Lugar 3', 'anred'),
+		'id'            => 'footer-3',
+		'before_widget' => '<section class="widget %1$s %2$s">',
+		'after_widget'  => '</section>'
+	) );
+
+	register_sidebar( array(
+		'name'          => __('Pié de página - Lugar 4', 'anred'),
+		'id'            => 'footer-4',
+		'before_widget' => '<section class="widget %1$s %2$s">',
+		'after_widget'  => '</section>'
+	) );
+
+
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'custom-logo' );

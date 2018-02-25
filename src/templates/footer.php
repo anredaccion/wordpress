@@ -1,3 +1,5 @@
+<br><br>
+<p class="float-right go-up"><a href="#">Ir arriba</a></p>
 <?php if (is_single()): ?>
 <div class="addthis_sharing_toolbox bg-light footer"></div>
 <?php endif; ?>
@@ -13,14 +15,27 @@
 	</div>
 </div>
 <div class="overlay"></div>
-<footer class="text-muted">
-	<div class="container">
-	<p class="float-right"><a href="#">Ir arriba</a></p>
-	</div>
-</footer>
 <?php wp_footer(); ?>
 <div id="fb-root"></div>
 <br><br><br>
-<div style="font-size:0.6em; width: 100%; text-align: center">;-)</div>
+<footer class="text-muted">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<?php dynamic_sidebar( 'footer-1' ); ?>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<?php dynamic_sidebar( 'footer-2' ); ?>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<?php dynamic_sidebar( 'footer-3' ); ?>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<?php dynamic_sidebar( 'footer-4' ); ?>
+			</div>
+		</div>
+	</div>
+	<div style="font-size:0.6em; width: 100%; text-align: center">;-)</div>
+</footer>
 </body>
 </html>
