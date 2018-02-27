@@ -97,3 +97,41 @@
 .btn-expand-sidebar {
 	color: rgba(0, 0, 0, 0.5);
 }
+
+.paging-navigation {
+	font-family: sans-serif;
+	border-top: solid 2px $color-anred;
+	margin-top: 2em;
+	padding: 2em 1em 1em 1em;
+	background: #fff;
+	background: hsl(0, 0%, 100%);
+	text-align: center;
+}
+
+.paging-navigation ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.paging-navigation li {
+	display: inline;
+}
+
+a.page-numbers,
+span.page-numbers {
+	padding: .3em .7em;
+	color: #333;
+	color: hsl(0, 0%, 20%);
+}
+
+a:hover.page-numbers {
+	color: #000;
+	color: hsl(0, 0%, 0%);
+}
+
+.paging-navigation .current {
+	font-weight: bold;
+	color: #000;
+	color: hsl(0, 0%, 0%);
+}
