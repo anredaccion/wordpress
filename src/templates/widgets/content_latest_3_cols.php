@@ -45,6 +45,9 @@ class ANRed_Content_Latest_3_Cols extends WP_Widget {
 					echo '</div>';
 			}
 
+			if ($i % 3 != 0)
+					echo '</div>';
+
 			echo $args['after_widget'];
 		}
 

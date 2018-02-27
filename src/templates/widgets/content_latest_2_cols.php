@@ -45,6 +45,9 @@ class ANRed_Content_Latest_2_Cols extends WP_Widget {
 					echo '</div>';
 			}
 
+			if ($i % 2 != 0)
+					echo '</div>';
+
 			echo $args['after_widget'];
 		}
 

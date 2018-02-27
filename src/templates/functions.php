@@ -285,3 +285,7 @@ add_action('new_to_publish', 'auto_featured_image');
 add_action('pending_to_publish', 'auto_featured_image');
 add_action('future_to_publish', 'auto_featured_image');
 */
+
+function anred_sanitize_checkbox( $input ) {
+	return ( ( isset( $input ) && true == $input ) ? true : false );
+}

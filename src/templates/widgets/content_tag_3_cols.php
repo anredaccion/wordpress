@@ -16,16 +16,20 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$query = new WP_Query( array(
+		$query_params = array(
 			'posts_per_page' => $instance['count'],
 			'tag_id' => $instance['tag'],
 			'orderby' => 'date',
 			'order' => 'DESC',
 			'post_type' => 'post',
 			'suppress_filters' => true,
-			'post_status' => 'publish',
-			'post__not_in' => Deduplicator::get()
-		 ) );
+			'post_status' => 'publish'
+		);
+
+		if (0 == $instance['repeat'])
+			$query_params['post__not_in'] = Deduplicator::get();
+
+		$query = new WP_Query( $query_params );
 
 		if ( $query->have_posts() ) {
 			echo $args['before_widget'];
@@ -45,6 +49,9 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 					echo '</div>';
 			}
 
+			if ($i % 3 != 0)
+					echo '</div>';
+
 			echo $args['after_widget'];
 		}
 
@@ -55,7 +62,8 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 		$defaults = array(
 			'title' => '',
 			'count' => 3,
-			'tag' => 0
+			'tag' => 0,
+			'repeat' => 0
 		);
 		$args = wp_parse_args( (array) $instance, $defaults );
 ?>
@@ -93,6 +101,15 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 				value="<?php echo sanitize_text_field( $args['count'] ); ?>"
 			>
 	</p>
+	<p>
+		<input
+				class="checkbox" type="checkbox"
+				<?php checked( $args['repeat'] ); ?>
+				id="<?php echo $this->get_field_id( 'repeat' ); ?>"
+				name="<?php echo $this->get_field_name( 'repeat' ); ?>"
+			>
+		<label for="<?php echo $this->get_field_id( 'repeat' ); ?>">Repetir artículos</label>
+	</p>
 <?php
 	}
 
@@ -103,6 +120,7 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 		if ($new_instance['tag'] != "-1")
 			$instance['tag'] = sanitize_option( 'default_category', $new_instance['tag'] );
 		$instance['count'] = sanitize_option( 'comments_per_page', $new_instance['count'] );
+		$instance['repeat'] = ( isset( $new_instance['repeat'] ) && $new_instance['repeat'] ) ? 1 : 0;
 
 		return $instance;
 	}
