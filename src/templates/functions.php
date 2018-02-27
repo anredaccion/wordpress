@@ -1,4 +1,5 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) exit;
 
 include get_template_directory() . '/customizer.php';
 
@@ -235,7 +236,7 @@ function anred_get_video_thumbnail( $post_id, $size = 'full' ) {
 				$filename = 'maxresdefault.jpg';
 				break;
 			default:
-			$filename = 'maxresdefault.jpg';
+				$filename = 'maxresdefault.jpg';
 		}
 
 		$remote_headers      = wp_remote_head( 'http://img.youtube.com/vi/' . $youtube_id . '/' . $filename );
