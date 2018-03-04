@@ -19,22 +19,24 @@ function anred_default_meta( $data ) {
 
 function anred_opengraph_meta() {
 	$properties = array();
-	$properties['og:locale'] = get_locale();
+	$properties['og:locale'] = 'es_LA';
+    $properties['og:site_name'] = get_bloginfo('name');
 
 	if ( is_single() ) {
 		global $post;
 		setup_postdata( $post->ID );
 
-		$properties['og:site_name'] = get_bloginfo('name');
-		$properties['og:title'] = get_the_title() . ' | ' . get_bloginfo('name');
-		$properties['og:description'] = wp_strip_all_tags( get_the_excerpt(), true );
-		$properties['og:url'] = get_the_permalink();
-
 		switch ( get_post_format() ) {
 			case 'video':
 				$properties['og:type'] = 'video.other';
 				$properties['og:image'] = anred_get_video_thumbnail( get_the_ID(), 'full' );
-				$properties['og:video'] = anred_get_video_url( get_the_ID() );
+				$properties['og:image:width'] = '1280';
+				$properties['og:image:height'] = '720';
+				$properties['og:video'] = str_replace( '/embed/', '/v/', anred_get_video_url( get_the_ID() ) );
+				$properties['og:video:secure_url'] = $properties['og:video'];
+				$properties['og:video:type'] = 'application/x-shockwave-flash';
+				$properties['og:video:width'] = '1280';
+				$properties['og:video:height'] = '720';
 				break;
 			default:
 				$properties['og:type'] = 'article';
@@ -45,6 +47,13 @@ function anred_opengraph_meta() {
 					$properties['og:image:height'] = $image[2];
 				}
 		}
+
+		$properties['og:title'] = get_the_title() . ' | ' . get_bloginfo('name');
+		$properties['og:image:alt'] = $properties['og:title'];
+		$properties['og:description'] = wp_strip_all_tags( get_the_excerpt(), true );
+		if ( '' == $properties['og:description'] )
+			$properties['og:description'] = get_the_title();
+		$properties['og:url'] = get_the_permalink();
 	} else {
 		$properties['og:title'] = get_bloginfo('name');
 		$properties['og:description'] = get_bloginfo('description');
@@ -66,9 +75,8 @@ function anred_facebook_meta( $data ) {
 
 	// TODO: Agregar al customizer la posibilidad de personalizar estos valores
 	$properties['fb:app_id'] = '1064341813650267';
-	$properties['fb:pages'] = '153390948078372';
 
-	if ( is_single() ) {
+	if ( is_single() && ! has_post_format( 'video' ) ) {
 		$properties['article:publisher'] = 'https://www.facebook.com/AgenciaANRed/';
 		$properties['article:section'] = $data['category'];
 		$properties['article:tag'] = $data['keywords'];
@@ -94,6 +102,8 @@ function anred_twitter_meta() {
 
 		$properties['twitter:title'] = get_the_title() . ' | ' . get_bloginfo('name');
 		$properties['twitter:description'] = wp_strip_all_tags( get_the_excerpt(), true );
+		if ( '' == $properties['twitter:description'] )
+			$properties['twitter:description'] = get_the_title();
 
 		switch ( get_post_format() ) {
 			case 'video':
@@ -121,13 +131,21 @@ function add_meta_tags() {
 	$data = array();
 
 	if ( is_single() ) {
+		global $post;
+		setup_postdata( $post->ID );
+
 		$_cats = wp_list_pluck( get_the_category(), 'name' );
 		$data['category'] = $_cats[0];
 
-		$_tags = wp_list_pluck( get_the_tags(), 'name' );
+		if ( get_the_tags() ) {
+			$_tags = wp_list_pluck( get_the_tags(), 'name' );
+			$_keywords = array_merge( $_cats, $_tags );
+		} else {
+			$_keywords = $_cats;
+		}
 
-		$_keywords = array_merge( $_cats, $_tags );
 		$data['keywords'] = implode( $_keywords, ', ' );
+
 	} else {
 		// TODO: Agregar al customizer la posibilidad de personalizar estos valores
 		$data['keywords'] = 'anred agencia de noticias redaccion argentina';
@@ -136,19 +154,19 @@ function add_meta_tags() {
 
 	$dm = anred_default_meta( $data );
 	foreach ( $dm as $property => $content )
-		echo '<meta name="' . $property . '" content="' . $content . '" /> ';
+		echo '<meta name="' . $property . '" content="' . $content . '" />' . "\n";
 
 	$og = anred_opengraph_meta();
 	foreach ( $og as $property => $content )
-		echo '<meta property="' . $property . '" content="' . $content . '" /> ';
+		echo '<meta property="' . $property . '" content="' . $content . '" />' . "\n";
 
 	$fb = anred_facebook_meta( $data );
 	foreach ( $fb as $property => $content )
-		echo '<meta property="' . $property . '" content="' . $content . '" /> ';
+		echo '<meta property="' . $property . '" content="' . $content . '" />' . "\n";
 
 	$tw = anred_twitter_meta( $data );
 	foreach ( $tw as $property => $content )
-		echo '<meta name="' . $property . '" content="' . $content . '" /> ';
+		echo '<meta name="' . $property . '" content="' . $content . '" />' . "\n";
 }
 
 add_action( 'wp_head', 'add_meta_tags' , 2 );
