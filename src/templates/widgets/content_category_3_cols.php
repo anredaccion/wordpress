@@ -11,7 +11,8 @@ class ANRed_Content_Category_3_Cols extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$defaults = array(
 			'count' => 3,
-			'category' => get_queried_object_id()
+			'category' => get_queried_object_id(),
+			'repeat' => 0
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );

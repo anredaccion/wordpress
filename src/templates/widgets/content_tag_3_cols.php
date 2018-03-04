@@ -11,7 +11,8 @@ class ANRed_Content_Tag_3_Cols extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$defaults = array(
 			'count' => 3,
-			'tag' => get_queried_object_id()
+			'tag' => get_queried_object_id(),
+			'repeat' => 0
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );

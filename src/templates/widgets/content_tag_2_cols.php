@@ -11,7 +11,8 @@ class ANRed_Content_Tag_2_Cols extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$defaults = array(
 			'count' => 2,
-			'tag' => get_queried_object_id()
+			'tag' => get_queried_object_id(),
+			'repeat' => 0
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
