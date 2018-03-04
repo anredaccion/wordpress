@@ -1,10 +1,8 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Agencia de Noticias RedAcci&oacute;n. 20 a&ntilde;os de comunicaci&oacute;n alternativa, comunitaria y popular.">
-	<title>ANRed</title>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

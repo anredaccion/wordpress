@@ -1,7 +1,8 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) exit;
 
-include get_template_directory() . '/customizer.php';
+include get_template_directory() . '/inc/customizer.php';
+include get_template_directory() . '/inc/meta.php';
 
 function anred_add_theme_scripts() {
 	wp_enqueue_style( 'bootstrap_css', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.css' );
@@ -264,37 +265,6 @@ function anred_get_video_thumbnail( $post_id, $size = 'full' ) {
 	return $video_thumbnail_url;
 }
 
-function auto_featured_image() {
-	global $post;
-
-	if (get_post_thumbnail_id($post->ID) == '') {
-		$attached_image = get_children( array(
-			'post_parent' => $post->ID,
-			'post_status' => 'inherit',
-			'post_type' => 'attachment',
-			'order' => 'ASC',
-			'orderby' => 'menu_order'
-		) );
-
-		if ($attached_image) {
-			foreach ($attached_image as $attachment_id => $attachment) {
-				set_post_thumbnail($post->ID, $attachment_id);
-			}
-		}
-	}
-}
-
-// Use it temporary to generate all featured images
-//add_action('the_post', 'auto_featured_image');
-/*
-// Used for new posts
-add_action('save_post', 'auto_featured_image');
-add_action('draft_to_publish', 'auto_featured_image');
-add_action('new_to_publish', 'auto_featured_image');
-add_action('pending_to_publish', 'auto_featured_image');
-add_action('future_to_publish', 'auto_featured_image');
-*/
-
 function anred_sanitize_checkbox( $input ) {
 	return ( ( isset( $input ) && true == $input ) ? true : false );
 }
@@ -340,3 +310,20 @@ function anred_paging_nav() {
 	<?php
 	endif;
 }
+
+function anred_title( $title, $sep ) {
+	if ( is_feed() ) {
+		return $title;
+	}
+
+	global $page, $paged;
+
+	$title .= " $sep " . get_bloginfo( 'name', 'display' );
+ 
+	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+		$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
+	}
+
+	return $title;
+}
+add_filter( 'wp_title', 'anred_title', 10, 2 );
