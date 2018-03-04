@@ -124,7 +124,7 @@ function anred_theme_setup() {
 	add_theme_support( 'custom-logo' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form' ) );
-	add_theme_support( 'post-formats', array( 'video' ) );
+	add_theme_support( 'post-formats', array( 'video', 'gallery' ) );
 
 	set_post_thumbnail_size(640, 480, true);
 }
