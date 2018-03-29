@@ -43,6 +43,14 @@
 		$(window).resize(function() {
 			$('#videoModal').modal('handleUpdate');
 		});
+
+		$('.gallery-item a').fancybox({
+			overlay: {
+				closeClick: true,
+				showEarly: true
+			},
+			arrows: true
+		});
 	});
 
 	$('.comment-form-content').on("input", function(){

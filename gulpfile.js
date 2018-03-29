@@ -14,6 +14,7 @@ var config = {
 		'hammerjs',
 		'jquery',
 		'jquery-hammerjs',
+		'jquery-fancybox',
 		'malihu-custom-scrollbar-plugin',
 		'popper.js'
 	]

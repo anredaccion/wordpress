@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = function( gulp, config ) {
 	gulp.task('vendor', function() {
 		config.vendor.forEach(pkg => {
-			if (pkg == 'bootstrap' || pkg == 'font-awesome') {
+			if (pkg == 'bootstrap' || pkg == 'font-awesome' || pkg == 'jquery-fancybox') {
 				gulp.start('vendor:' + pkg);
 				return;
 			}
@@ -61,6 +61,31 @@ module.exports = function( gulp, config ) {
 
 		return gulp.src( './node_modules/font-awesome/fonts/**' )
 			.pipe( gulp.dest( config.target + '/vendor/font-awesome' ) );
+	});
+
+	gulp.task('vendor:jquery-fancybox', function() {
+		gulp.src( './node_modules/jquery-fancybox/source/scss/jquery.fancybox.scss')
+			.pipe( plumber() )
+			.pipe( sass( {
+				indentType: 'tab',
+				indentWidth: 1,
+				outputStyle: 'expanded',
+			} ) ).on( 'error', sass.logError)
+			.pipe( postcss([
+				autoprefixer({
+					browsers: ['last 2 versions'],
+					cascade: false,
+				})
+			] ) )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/css' ) );
+
+		gulp.src( './node_modules/jquery-fancybox/source/js/jquery.fancybox.js' )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/js' ) );
+
+		gulp.src( './node_modules/jquery-fancybox/source/img/**' )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/img' ) );
+
+		
 	});
 };
 
