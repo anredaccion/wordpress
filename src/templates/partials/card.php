@@ -42,8 +42,7 @@ if ( ! $image ) { // No hay imagen destacada seleccionada
 				}
 			}
 		} else { // No hay attachments ni tags img en el contenido
-			$custom_logo_id = get_theme_mod( 'custom_logo' );
-			$image = wp_get_attachment_image_url( $custom_logo_id , 'full' );
+			$image = get_template_directory_uri() . "/images/logo-nada.png";
 		}
 	}
 }
