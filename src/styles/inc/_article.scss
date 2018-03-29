@@ -67,4 +67,14 @@
 		text-align: justify;
 	}
 
+	.yarpp-thumbnail {
+		border: none !important;
+		overflow: visible !important;
+		height: auto !important;
+	}
+
+	.yarpp-thumbnail-title {
+		max-height: none !important;
+	}
+
 }
