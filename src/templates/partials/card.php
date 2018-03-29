@@ -15,7 +15,7 @@ if ( ! $image ) { // No hay imagen destacada seleccionada
 		}
 	} else { // No hay imagenes attached al post
 		$document = new DOMDocument();
-		$document->loadHTML( get_the_content() );
+		@$document->loadHTML( get_the_content() );
 		$xml = simplexml_import_dom( $document );
 		$images = $xml->xpath('//img');
 
