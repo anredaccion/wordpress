@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
+    "autoprefixer": "^7.2.6",
     "bootstrap": "^4.0.0",
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
@@ -15,12 +15,12 @@
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-beautify": "^2.0.1",
-    "gulp-clean-css": "^3.9.2",
+    "gulp-clean-css": "^3.9.3",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.2.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^3.2.1",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
     "hammerjs": "^2.0.8",
@@ -28,7 +28,7 @@
     "jquery-fancybox": "^3.1.0",
     "jquery-hammerjs": "^2.0.0",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "popper.js": "^1.13.0"
+    "popper.js": "^1.14.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

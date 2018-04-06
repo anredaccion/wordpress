@@ -10,9 +10,8 @@ $thumbnails_default = get_template_directory_uri() . "/images/logo-cuadrado.png"
 
 $dimensions = $this->thumbnail_dimensions();
 
-$output .= '<h3>Más noticias</h3>' . "\n";
-
 if (have_posts()) {
+	$output .= '<h3>Más noticias</h3>' . "\n";
 	$output .= '<div class="yarpp-thumbnails-horizontal">' . "\n";
 	while (have_posts()) {
 		the_post();
@@ -33,8 +32,6 @@ if (have_posts()) {
 
 	}
 	$output .= "</div>\n";
-} else {
-	$output = '';
 }
 
 $this->enqueue_thumbnails( $dimensions );

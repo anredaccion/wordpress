@@ -3,7 +3,7 @@
 <?php if (is_single()): ?>
 <div class="addthis_sharing_toolbox bg-light footer"></div>
 <?php endif; ?>
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg">
 		<div class="modal-content">
 			<div class="modal-body">

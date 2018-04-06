@@ -59,3 +59,4 @@ $comments = $comments_query->query( $args );
 	<?php endforeach; ?>
 	</ol>
 <?php endif; ?>
+</section>

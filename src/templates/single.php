@@ -8,34 +8,36 @@
 					<div class="date text-muted">
 						<i class="fa fa-calendar"></i> <?php the_date() ?>
 					</div>
-				<div class="cats">
-					<?php
-					$cats = get_the_category();
-					$output = array();
-
-					foreach($cats as $cat)
-						$output[] = '<a class="tag" href="'. esc_url( get_category_link( $cat->term_id ) ) .'">' . $cat->name . '</a>';
-					
-					echo implode(' | ', $output);
-					?>
-					</div>
-					<div class="tags">
-					<?php
-					$tags = get_the_tags();
-					if ($tags) {
+					<div class="cats">
+						<?php
+						$cats = get_the_category();
 						$output = array();
 
-						foreach($tags as $tag)
-							$output[] = '<a class="tag" href="'. esc_url( get_tag_link( $tag->term_id ) ) .'">' . $tag->name . '</a>';
+						foreach($cats as $cat)
+							$output[] = '<a class="tag" href="'. esc_url( get_category_link( $cat->term_id ) ) .'">' . $cat->name . '</a>';
 						
-						echo implode(', ', $output);
-					}
-					?>
+						echo implode(' | ', $output);
+						?>
+					</div>
+					<div class="tags">
+						<?php
+						$tags = get_the_tags();
+						if ($tags) {
+							$output = array();
+
+							foreach($tags as $tag)
+								$output[] = '<a class="tag" href="'. esc_url( get_tag_link( $tag->term_id ) ) .'">' . $tag->name . '</a>';
+							
+							echo implode(', ', $output);
+						}
+						?>
 					</div>
 					<h1><?php the_title(); ?></h1>
 				</header>
 				<div>
+					<!-- the_content() begin -->
 					<?php the_content(); ?>
+					<!-- the_content() end -->
 				</div>
 				<hr>
 				<footer>
