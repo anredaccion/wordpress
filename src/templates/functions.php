@@ -9,6 +9,7 @@ include get_template_directory() . '/inc/navigation.php';
 include get_template_directory() . '/inc/deduplicator.php';
 include get_template_directory() . '/inc/title.php';
 include get_template_directory() . '/inc/utils.php';
+include get_template_directory() . '/inc/postviews.php';
 
 function anred_add_theme_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.css' );

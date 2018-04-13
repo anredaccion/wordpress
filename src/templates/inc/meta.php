@@ -11,7 +11,9 @@ function anred_default_meta( $data ) {
 
 		$properties['description'] = wp_strip_all_tags( get_the_excerpt(), true );
 		$properties['keywords'] = $data['keywords'];
-		$properties['category'] = $data['category'];
+
+		if ( isset ($data['category']) )
+			$properties['category'] = $data['category'];
 	}
 
 	return $properties;
@@ -78,7 +80,10 @@ function anred_facebook_meta( $data ) {
 
 	if ( is_single() && ! has_post_format( 'video' ) ) {
 		$properties['article:publisher'] = 'https://www.facebook.com/AgenciaANRed/';
-		$properties['article:section'] = $data['category'];
+
+		if ( isset($data['category']) )
+			$properties['article:section'] = $data['category'];
+		
 		$properties['article:tag'] = $data['keywords'];
 	}
 
@@ -134,8 +139,11 @@ function add_meta_tags() {
 		global $post;
 		setup_postdata( $post->ID );
 
-		$_cats = wp_list_pluck( get_the_category(), 'name' );
-		$data['category'] = $_cats[0];
+		$categories = get_the_category();
+		$_cats = wp_list_pluck( $categories , 'name' );
+		if ( ! empty( $categories ) ) {
+			$data['category'] = $_cats[0];
+		}
 
 		if ( get_the_tags() ) {
 			$_tags = wp_list_pluck( get_the_tags(), 'name' );

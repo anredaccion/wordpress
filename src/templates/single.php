@@ -1,3 +1,4 @@
+<?php anred_set_post_views( get_the_ID() ) ?>
 <?php get_header(); ?>
 <div class="article container">
 	<div class="row">

@@ -1,10 +1,10 @@
 <?php
 
-class ANRed_Comunicados extends WP_Widget {
+class ANRed_Populares extends WP_Widget {
 	function __construct() {
 		parent::__construct(
-			'anred_comunicados',
-			'Comunicados'
+			'anred_populares',
+			'Populares'
 		);
 	}
 	 
@@ -16,25 +16,40 @@ class ANRed_Comunicados extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$query = new WP_Query( array(
+		$query_params = array(
 			'posts_per_page' => $instance['count'],
-			'post_type' => 'comunicado',
+			'post_type' => 'post',
 			'suppress_filters' => true,
-			'post_status' => 'publish'
-		) );
+			'post_status' => 'publish',
+			'order' => 'DESC',
+			'orderby' => 'meta_value_num',
+			'meta_key' => 'anred_view_count',
+			'date_query' => array(
+				array(
+					'column' => 'post_date_gmt',
+					'after' => '5 day ago'
+				)
+			)
+		);
+
+		global $wp_query;
+		if ( get_the_ID() )
+			$query_params['post__not_in'] = array( get_the_ID() );
+
+		$query = new WP_Query( $query_params );
 
 		if ( $query->have_posts() ) {
 			echo $args['before_widget'];
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . $instance['title'] . $args['after_title'];
-			echo '<ul class="comunicados">';
+			echo '<ol class="populares">';
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$who = get_post_meta(get_the_ID(), 'who', true);
 				echo '<li>';
 				if ($who != '')
 					echo '<b>' . $who . ':</b> ';
-				echo '<i><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></i>';
+				echo '<a href="' . get_the_permalink() . '">' . get_the_title() . '</a>';
 				echo '</li>';
 			}
 			echo '</ul>';
@@ -62,7 +77,7 @@ class ANRed_Comunicados extends WP_Widget {
 			>
 	</p>
 	<p>
-		<label for="<?php echo $this->get_field_id( 'count' ); ?>">Cantidad de comunicados</label>
+		<label for="<?php echo $this->get_field_id( 'count' ); ?>">Cantidad de entradas</label>
 		<input
 				class="widefat"
 				id="<?php echo $this->get_field_id( 'count' ); ?>"
@@ -86,4 +101,4 @@ class ANRed_Comunicados extends WP_Widget {
 	}
 }
 
-register_widget( 'ANRed_Comunicados' );
+register_widget( 'ANRed_Populares' );
