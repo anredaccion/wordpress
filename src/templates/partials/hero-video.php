@@ -1,6 +1,6 @@
 <div class="carousel-item <?php echo ($current_post == 0 ? 'active' : ''); ?>">
 	<div class="carousel-caption d-md-block">
-		<h3><?php the_title(); ?></h3>
+		<h3><a href="<?php the_permalink() ?>" alt="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 
 		<div class="tags">
 		<?php

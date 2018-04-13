@@ -77,4 +77,20 @@
 		max-height: none !important;
 	}
 
+	img.size-full {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+
+	div.wp-caption {
+		max-width: 100%;
+
+		.wp-caption-text {
+			background-color: #eee;
+			padding: 1px 4px;
+			font-size: .8em;
+		}
+	}
+
 }
