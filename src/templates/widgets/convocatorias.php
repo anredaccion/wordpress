@@ -49,10 +49,11 @@ class ANRed_Convocatorias extends WP_Widget {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$date = get_post_meta(get_the_ID(), 'when-date', true);
+				$time = get_post_meta(get_the_ID(), 'when-time', true);
 				$place = get_post_meta(get_the_ID(), 'where', true);
 				echo '<li>';
 				echo '<b><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></b> ';
-				echo '<i>' . mysql2date('d/m', $date) . ' ' . $place . '</i>';
+				echo '<i>' . mysql2date('d/m', $date) . ' ' . mysql2date('G:i', $time) . ' ' . $place . '</i>';
 				echo '</li>';
 			}
 			echo '</ul>';
