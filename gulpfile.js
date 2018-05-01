@@ -12,6 +12,7 @@ var config = {
 		'bootstrap',
 		'font-awesome',
 		'hammerjs',
+		'image-set-polyfill',
 		'jquery',
 		'jquery-hammerjs',
 		'jquery-fancybox',

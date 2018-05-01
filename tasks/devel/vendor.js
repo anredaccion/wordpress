@@ -8,7 +8,8 @@ const path = require('path');
 module.exports = function( gulp, config ) {
 	gulp.task('vendor', function() {
 		config.vendor.forEach(pkg => {
-			if (pkg == 'bootstrap' || pkg == 'font-awesome' || pkg == 'jquery-fancybox') {
+			if (pkg == 'bootstrap' || pkg == 'font-awesome' || pkg == 'jquery-fancybox' ||
+				pkg == 'image-set-polyfill' ) {
 				gulp.start('vendor:' + pkg);
 				return;
 			}
@@ -86,6 +87,11 @@ module.exports = function( gulp, config ) {
 			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/img' ) );
 
 		
+	});
+
+	gulp.task('vendor:image-set-polyfill', function() {
+		gulp.src( './node_modules/image-set-polyfill/image-set-polyfill.js' )
+			.pipe( gulp.dest( config.target + '/vendor/image-set-polyfill/js' ) );
 	});
 };
 
