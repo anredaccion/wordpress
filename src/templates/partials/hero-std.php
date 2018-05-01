@@ -1,7 +1,8 @@
 <div class="carousel-item <?php echo ($current_post == 0 ? 'active' : ''); ?>">
 	<div class="d-block w-100 image" style="background-image: -webkit-image-set(
-		url('<?php the_post_thumbnail_url('medium_large') ?>') 0.5x,
-		url('<?php the_post_thumbnail_url('full') ?>') 1.0x
+		url('<?php the_post_thumbnail_url('medium_large') ?>') 1.0x,
+		url('<?php the_post_thumbnail_url('large') ?>') 2.0x,
+		url('<?php the_post_thumbnail_url('full') ?>') 4.0x
 	);"></div>
 	<div class="carousel-caption d-md-block">
 		<h3><a href="<?php the_permalink() ?>" alt="<?php the_title(); ?>"><?php the_title(); ?></a></h3>

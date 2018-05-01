@@ -2,6 +2,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 include get_template_directory() . '/inc/customizer.php';
+include get_template_directory() . '/inc/clipboard.php';
 include get_template_directory() . '/inc/meta.php';
 include get_template_directory() . '/inc/gallery.php';
 include get_template_directory() . '/inc/video.php';
