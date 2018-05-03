@@ -157,3 +157,5 @@ function anred_register_widgets() {
 }
 
 add_action( 'widgets_init', 'anred_register_widgets' );
+
+add_filter( 'is_protected_meta', '__return_false' ); 

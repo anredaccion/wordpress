@@ -5,7 +5,7 @@ const gulp = require('gulp');
 */
 
 var config = {
-	'env': 'devel',
+	'env': 'prod',
 	'source': './src',
 	'target': './dist',
 	'vendor': [

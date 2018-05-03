@@ -9,7 +9,8 @@ const cleancss = require('gulp-clean-css');
 module.exports = function( gulp, config ) {
 	gulp.task('vendor', function() {
 		config.vendor.forEach(pkg => {
-			if (pkg == 'bootstrap' || pkg == 'font-awesome') {
+			if (pkg == 'bootstrap' || pkg == 'font-awesome' || pkg == 'jquery-fancybox' ||
+				pkg == 'image-set-polyfill' ) {
 				gulp.start('vendor:' + pkg);
 				return;
 			}
@@ -60,6 +61,36 @@ module.exports = function( gulp, config ) {
 
 		gulp.src( './node_modules/font-awesome/fonts/**' )
 			.pipe( gulp.dest( config.target + '/vendor/font-awesome' ) );
+	});
+
+	gulp.task('vendor:jquery-fancybox', function() {
+		gulp.src( './node_modules/jquery-fancybox/source/scss/jquery.fancybox.scss')
+			.pipe( sass( {
+				outputStyle: 'compressed'
+			} ) ).on( 'error', sass.logError)
+			.pipe( postcss([
+				autoprefixer({
+					browsers: ['last 2 versions'],
+					cascade: false,
+				})
+			] ) )
+			.pipe( cleancss() )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/css' ) );
+
+		gulp.src( './node_modules/jquery-fancybox/source/js/jquery.fancybox.js' )
+			.pipe ( uglify() )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/js' ) );
+
+		gulp.src( './node_modules/jquery-fancybox/source/img/**' )
+			.pipe( gulp.dest( config.target + '/vendor/jquery-fancybox/img' ) );
+
+		
+	});
+
+	gulp.task('vendor:image-set-polyfill', function() {
+		gulp.src( './node_modules/image-set-polyfill/image-set-polyfill.js' )
+			.pipe ( uglify() )
+			.pipe( gulp.dest( config.target + '/vendor/image-set-polyfill/js' ) );
 	});
 };
 
