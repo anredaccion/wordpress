@@ -1,5 +1,44 @@
 <?php
 
+function anred_calc_title() {
+	$title = get_the_title();
+	
+	if ( is_single() && get_post_type() == 'convocatoria') {
+		$date = get_post_meta(get_the_ID(), 'when-date', true);
+		$time = get_post_meta(get_the_ID(), 'when-time', true);
+		$place = get_post_meta(get_the_ID(), 'where', true);
+
+		$convocatoria = '';
+
+		if ( $date != '' ) {
+			$convocatoria .= mysql2date('d/m', $date);
+		}
+
+		if ( $time != '' ) {
+			$convocatoria .= ' ' . mysql2date('G:i', $time);
+		}
+
+		if ( $place != '' ) {
+			$convocatoria .= ' ' . $place;
+		}
+
+		if ( $convocatoria != '' ) {
+			$title =  $convocatoria . ': ' . $title;
+		}
+	}
+
+	if ( is_single() && get_post_type() == 'comunicado') {
+		$who = get_post_meta(get_the_ID(), 'who', true);
+
+		if ( $who != '' )
+			$title = $who . ': ' . $title;
+	}
+	
+	$title .= ' | ' . get_bloginfo('name');
+
+	return $title;
+}
+
 function anred_default_meta( $data ) {
 	$properties = array();
 
@@ -50,7 +89,7 @@ function anred_opengraph_meta() {
 				}
 		}
 
-		$properties['og:title'] = get_the_title() . ' | ' . get_bloginfo('name');
+		$properties['og:title'] = anred_calc_title();
 		$properties['og:image:alt'] = $properties['og:title'];
 		$properties['og:description'] = wp_strip_all_tags( get_the_excerpt(), true );
 		if ( '' == $properties['og:description'] )
@@ -106,7 +145,7 @@ function anred_twitter_meta() {
 		$properties['twitter:creator'] = '@Red__Accion';
 		$properties['twitter:creator:id'] = '158505485';
 
-		$properties['twitter:title'] = get_the_title() . ' | ' . get_bloginfo('name');
+		$properties['twitter:title'] = anred_calc_title();
 		$properties['twitter:description'] = wp_strip_all_tags( get_the_excerpt(), true );
 		if ( '' == $properties['twitter:description'] )
 			$properties['twitter:description'] = get_the_title();
