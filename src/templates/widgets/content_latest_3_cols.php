@@ -15,7 +15,7 @@ class ANRed_Content_Latest_3_Cols extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$query = new WP_Query( array(
+		$query_params = array(
 			'posts_per_page' => $instance['count'],
 			'cat' => 0,
 			'orderby' => 'date',
@@ -24,7 +24,13 @@ class ANRed_Content_Latest_3_Cols extends WP_Widget {
 			'suppress_filters' => true,
 			'post_status' => 'publish',
 			'post__not_in' => Deduplicator::get()
-		) );
+		);
+
+		if ( get_query_var( 'paged' ) ) {
+			$query_params['paged'] = get_query_var( 'paged' );
+		}
+
+		$query = new WP_Query( $query_params );
 
 		if ( $query->have_posts() ) {
 			echo $args['before_widget'];
