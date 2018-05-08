@@ -20,6 +20,15 @@
 						echo implode(' | ', $output);
 						?>
 					</div>
+					<h1><?php the_title(); ?></h1>
+				</header>
+				<div>
+					<!-- the_content() begin -->
+					<?php the_content(); ?>
+					<!-- the_content() end -->
+				</div>
+				<hr>
+				<footer>
 					<div class="tags">
 						<?php
 						$tags = get_the_tags();
@@ -33,15 +42,7 @@
 						}
 						?>
 					</div>
-					<h1><?php the_title(); ?></h1>
-				</header>
-				<div>
-					<!-- the_content() begin -->
-					<?php the_content(); ?>
-					<!-- the_content() end -->
-				</div>
-				<hr>
-				<footer>
+					<hr>
 					<div class="comments-counter ">
 						<i class="fa fa-comments" aria-hidden="true"></i> <?php echo get_comments_number(); ?> comentarios
 					</div>
