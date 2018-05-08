@@ -84,6 +84,7 @@ function anred_facebook_meta( $data ) {
 		if ( isset($data['category']) )
 			$properties['article:section'] = $data['category'];
 		
+		if ( isset($data['keywords']) )
 		$properties['article:tag'] = $data['keywords'];
 	}
 

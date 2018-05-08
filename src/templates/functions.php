@@ -8,7 +8,6 @@ include get_template_directory() . '/inc/gallery.php';
 include get_template_directory() . '/inc/video.php';
 include get_template_directory() . '/inc/navigation.php';
 include get_template_directory() . '/inc/deduplicator.php';
-include get_template_directory() . '/inc/title.php';
 include get_template_directory() . '/inc/utils.php';
 include get_template_directory() . '/inc/postviews.php';
 
