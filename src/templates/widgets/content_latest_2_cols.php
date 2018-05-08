@@ -28,6 +28,8 @@ class ANRed_Content_Latest_2_Cols extends WP_Widget {
 
 		if ( get_query_var( 'paged' ) ) {
 			$query_params['paged'] = get_query_var( 'paged' );
+			$offset = (get_query_var( 'paged' ) - 1) * anred_get_latest_post_count();
+			$query_params['offset'] = $offset;
 		}
 
 		$query = new WP_Query( $query_params );

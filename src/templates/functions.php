@@ -158,3 +158,19 @@ function anred_register_widgets() {
 add_action( 'widgets_init', 'anred_register_widgets' );
 
 add_filter( 'is_protected_meta', '__return_false' ); 
+
+function anred_get_latest_post_count() {
+	$count = 0;
+
+	$widget_instances = get_option('widget_anred_content_latest_2_cols');
+	foreach ($widget_instances as $instance) {
+		$count += $instance['count'];
+	}
+
+	$widget_instances = get_option('widget_anred_content_latest_3_cols');
+	foreach ($widget_instances as $instance) {
+		$count += $instance['count'];
+	}
+
+	return $count;
+}
