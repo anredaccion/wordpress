@@ -1,77 +1,85 @@
 .main.header {
 	text-align: center;
 	font-family: 'Libre Franklin', sans-serif;
+}
 
-	.carousel {
-		.image {
-			background-position: center;
-			background-size: cover;
+.carousel {
+	margin-bottom: 1rem;
+
+	.carousel-control-prev-icon, .carousel-control-next-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.carousel-indicators {
+		bottom: 0px;
+
+		li {
+			border-radius: .5rem;
+			width: 1rem;
+			height: 1rem;
+			margin: 0 7.5px;
+		}
+	}
+
+	.carousel-inner {
+		.carousel-item {
 			height: 70vh;
-		}
 
-		.video {
-			background-position: center;
-			background-size: cover;
-			height: 70vh;
-			text-align: center;
-
-			.play-icon {
-				font-size: 20vh;
-				color: rgba(255, 255, 255, .5);
-				margin-top: 25vh;
-				cursor: pointer;
-			}
-		}
-
-		.carousel-caption {
-			text-shadow: 0px 0px 3px rgba(100, 100, 100, .5), -1px -1px rgba(100, 100, 100, .5), 1px 1px rgba(100, 100, 100, .5);
-			bottom: 0;
-			padding-bottom: 1em;
-			left: 1em;
-			right: 1em;
-
-			h3 {
-				font-weight: bold;
-				margin-bottom: 1em;
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				max-height: 800px;
+				width: auto;
 			}
 
-			a {
-				color: #fff;
+			.video {
+				background-position: center;
+				background-size: cover;
+				height: 70vh;
+				text-align: center;
+	
+				.play-icon {
+					font-size: 20vh;
+					color: rgba(255, 255, 255, .5);
+					margin-top: 25vh;
+					cursor: pointer;
+				}
 			}
 
-			.tags {
-				text-align: right;
-				font-size: .75em;
-				font-weight: bold;
-			}
-
-			.tag {
-				background-color: rgba(0, 0, 0, 0.5);
-				padding: .5em;
-				display: inline-block;
-				margin-left: 1em;
-			}
-		}
-
-		.carousel-control-prev-icon, .carousel-control-next-icon {
-			width: 2.5rem;
-			height: 2.5rem;
-		}
-
-		.carousel-indicators {
-			bottom: 0px;
-
-			li {
-				border-radius: .5rem;
-				width: 1rem;
-				height: 1rem;
-				margin: 0 7.5px;
+			.carousel-caption {
+				text-shadow: 0px 0px 3px rgba(100, 100, 100, .5), -1px -1px rgba(100, 100, 100, .5), 1px 1px rgba(100, 100, 100, .5);
+				bottom: 0;
+				padding-bottom: 1em;
+				left: 1em;
+				right: 1em;
+	
+				h3 {
+					font-weight: bold;
+					margin-bottom: 1em;
+				}
+	
+				a {
+					color: #fff;
+				}
+	
+				.tags {
+					text-align: right;
+					font-size: .75em;
+					font-weight: bold;
+				}
+	
+				.tag {
+					background-color: rgba(0, 0, 0, 0.5);
+					padding: .5em;
+					display: inline-block;
+					margin-left: 1em;
+				}
 			}
 		}
 	}
-}
-
-#hero-news {
-	margin-bottom: 1rem;
-	margin-top: 29px;
 }
