@@ -1,5 +1,11 @@
 <div class="carousel-item <?php echo ($current_post == 0 ? 'active' : ''); ?>">
-	<img class="d-block w-100" src="<?php the_post_thumbnail_url('full') ?>">
+	<picture>
+		<source media="(min-width: 1024px)" srcset="<?php the_post_thumbnail_url( 'full' ) ?>">
+		<source media="(min-width: 640px)" srcset="<?php the_post_thumbnail_url( 'large' ) ?>">
+		<source media="(min-width: 300px)" srcset="<?php the_post_thumbnail_url(array(640, 480) ) ?>">
+		<source media="(min-width: 150px)" srcset="<?php the_post_thumbnail_url( 'medium' ) ?>">
+		<img class="d-block w-100" src="<?php the_post_thumbnail_url('thumbnail') ?>">
+	</picture>
 	<div class="carousel-caption d-md-block">
 		<h3><a href="<?php the_permalink() ?>" alt="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 		<div class="tags">
