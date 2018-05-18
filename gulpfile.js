@@ -1,13 +1,9 @@
 const gulp = require('gulp');
 
-/*
-** env: devel | prod
-*/
-
 var config = {
-	'env': 'prod',
 	'source': './src',
-	'target': './dist',
+	'dist': './dist',
+	'build': './build/anred-theme',
 	'vendor': [
 		'bootstrap',
 		'font-awesome',
@@ -21,12 +17,12 @@ var config = {
 	]
 }
 
-require('./tasks/' + config.env + '/clean')(gulp, config);
-require('./tasks/' + config.env + '/vendor')(gulp, config);
-require('./tasks/' + config.env + '/styles')(gulp, config);
-require('./tasks/' + config.env + '/scripts')(gulp, config);
-require('./tasks/' + config.env + '/templates')(gulp, config);
-require('./tasks/' + config.env + '/images')(gulp, config);
+require('./tasks/clean')(gulp, config);
+require('./tasks/vendor')(gulp, config);
+require('./tasks/styles')(gulp, config);
+require('./tasks/scripts')(gulp, config);
+require('./tasks/templates')(gulp, config);
+require('./tasks/images')(gulp, config);
 
 require('./tasks/build')(gulp, config);
 require('./tasks/watch')(gulp, config);
