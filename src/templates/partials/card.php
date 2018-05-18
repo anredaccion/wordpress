@@ -11,7 +11,7 @@ if ( ! $image ) {
 		<iframe class="embed-responsive-item" src="<?php echo anred_get_video_url( get_the_ID() ) ?>"></iframe>
 	</div>
 <?php else: ?>
-	<img class="card-img-top" src="<?php echo $image; ?>" alt="<?php the_title() ?>">
+	<img class="card-img-top" src="<?php echo get_template_directory_uri(); ?>/images/placemark.png" data-src="<?php echo $image; ?>" alt="<?php the_title() ?>">
 <?php endif; ?>
 	<div class="card-body">
 		<h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h5>
