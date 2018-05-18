@@ -33,8 +33,8 @@
 				-webkit-transform: translate(-50%, -50%);
 				-ms-transform: translate(-50%, -50%);
 				transform: translate(-50%, -50%);
-				max-height: 800px;
-				width: auto;
+				height: 70vh;
+				object-fit: cover;
 			}
 
 			.video {
