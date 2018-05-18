@@ -1,4 +1,7 @@
-<?php anred_set_post_views( get_the_ID() ) ?>
+<?php
+include_once get_template_directory() . '/inc/postviews.php';
+anred_set_post_views( get_the_ID() )
+?>
 <?php get_header(); ?>
 <div class="article container">
 	<div class="row">
