@@ -35,14 +35,15 @@ if (post_password_required()) {
 		<div class="form-row">
 			<div class="col-md-5 col-sm-12">
 				<div class="form-group">
+					<input type="text" class="form-control comment-form-author" id="author" name="author" placeholder="<?php echo __( 'Name' ) ?>" aria-required="true" required="required">
+				</div>
+				<div class="form-group">
 					<input type="email" class="form-control comment-form-email" id="email" name="email" aria-describedby="emailHelp" placeholder="<?php echo __( 'Email' ) ?>" aria-required="true" required="required">
 					<small id="emailHelp" class="form-text text-muted"><?php echo __( 'Your email address will not be published.' ) ?></small>
 				</div>
 			</div>
 			<div class="col-md-5 col-sm-12">
-				<div class="form-group">
-					<input type="text" class="form-control comment-form-author" id="author" name="author" placeholder="<?php echo __( 'Name' ) ?>" aria-required="true" required="required">
-				</div>
+				<div class="g-recaptcha" data-sitekey="6LdcZlcUAAAAAIlaE_t4gJyGqdUwsROvzIAwoMme"></div>
 			</div>
 			<div class="col-md-2 col-sm-12">
 				<input name="submit" type="submit" id="submit" class="submit btn w-100" value="Enviar">
@@ -73,4 +74,5 @@ $comments = $comments_query->query( $args );
 	<?php endforeach; ?>
 	</ol>
 <?php endif; ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </section>
