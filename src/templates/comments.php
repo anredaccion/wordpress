@@ -19,6 +19,20 @@ if (post_password_required()) {
 			</div>
 		</div>
 		<div class="form-row">
+			<div class="col">
+				<div class="form-group">
+					<small class="form-text text-muted">
+						Los comentarios publicados y las posibles consecuencias derivadas son de exclusiva responsabilidad de sus autores.
+						Está prohibido la publicación de comentarios discriminatorios, difamatorios, calumniosos, injuriosos o amenazantes. 
+						Está prohibida la publicación de datos personales o de contacto propios o de terceros, con o sin autorización.
+						Está prohibida la utilización de los comentarios con fines de promoción comercial o la realización de cualquier acto lucrativo a través de los mismos.
+						Sin perjuicio de lo indicado ANRed se reserva el derecho a publicar o remover los comentarios más allá de lo establecido por estas condiciones sin que se pueda considerar un aval de lo publicado o un acto de censura.
+						Enviar un comentario implica la aceptación de estas condiciones.
+					</small>
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
 			<div class="col-md-5 col-sm-12">
 				<div class="form-group">
 					<input type="email" class="form-control comment-form-email" id="email" name="email" aria-describedby="emailHelp" placeholder="<?php echo __( 'Email' ) ?>" aria-required="true" required="required">
