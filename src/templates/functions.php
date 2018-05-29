@@ -11,6 +11,7 @@ include get_template_directory() . '/inc/deduplicator.php';
 include get_template_directory() . '/inc/utils.php';
 include get_template_directory() . '/inc/postviews.php';
 include get_template_directory() . '/inc/recaptcha.php';
+include get_template_directory() . '/inc/keepalive.php';
 
 function anred_add_theme_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.css' );
