@@ -140,7 +140,7 @@ function anred_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form' ) );
 	add_theme_support( 'post-formats', array( 'video', 'gallery' ) );
 
-	set_post_thumbnail_size(640, 480, true);
+	set_post_thumbnail_size(640, 480, array( 'center', 'center'));
 }
 
 add_action( 'after_setup_theme', 'anred_theme_setup' );
