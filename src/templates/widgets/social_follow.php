@@ -4,15 +4,9 @@ class ANRed_Social_Follow extends WP_Widget {
 	private $list = array(
 		'facebook' => array(
 			'name' => 'Facebook',
-			'icon' => 'fa-facebook',
+			'icon' => 'fa-facebook-square',
 			'mobile' => 'fb://page/{id}',
 			'desktop' => 'https://www.facebook.com/{id}'
-		),
-		'twitter' => array(
-			'name' => 'Twitter',
-			'icon' => 'fa-twitter',
-			'mobile' => 'https://twitter.com/{id}',
-			'desktop' => 'https://twitter.com/{id}'
 		),
 		'instagram' => array(
 			'name' => 'Instagram',
@@ -20,19 +14,30 @@ class ANRed_Social_Follow extends WP_Widget {
 			'mobile' => 'instagram://user?username={id}',
 			'desktop' => 'https://www.instagram.com/{id}'
 		),
+		'mastodon' => array(
+			'name' => 'Mastodon',
+			'icon' => 'fa-mastodon',
+			'mobile' => 'https://todon.nl/{id}',
+			'desktop' => 'https://todon.nl/{id}'
+		),
 		'telegram' => array(
 			'name' => 'Telegram',
 			'icon' => 'fa-telegram',
 			'mobile' => 'tg://resolve?domain={id}',
 			'desktop' => 'https://web.telegram.org/#/im?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3D{id}'
-
+		),
+		'twitter' => array(
+			'name' => 'Twitter',
+			'icon' => 'fa-twitter',
+			'mobile' => 'https://twitter.com/{id}',
+			'desktop' => 'https://twitter.com/{id}'
 		),
 		'youtube' => array(
 			'name' => 'YouTube',
 			'icon' => 'fa-youtube-square',
 			'mobile' => 'https://www.youtube.com/user/{id}',
 			'desktop' => 'https://www.youtube.com/user/{id}'
-		)
+		),
 	);
 
 	function __construct() {
@@ -50,7 +55,7 @@ class ANRed_Social_Follow extends WP_Widget {
 			} else {
 				echo '<a href="' . str_replace('{id}', urlencode($data), $this->list[$id]['desktop']) . '" alt="' . $this->list[$id]['name']  . '" target="_blank" rel="nofollow">';
 			}
-			echo '<i class="fa ' . $this->list[$id]['icon']  . '" aria-hidden="true"></i>';
+			echo '<i class="fab ' . $this->list[$id]['icon']  . '"></i>';
 			echo '</a>';
 		}
 		echo $args['after_widget'];

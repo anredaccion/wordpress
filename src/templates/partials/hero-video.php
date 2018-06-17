@@ -18,6 +18,6 @@
 		data-toggle="modal"
 		data-target="#videoModal"
 	>
-		<i class="fa fa-play-circle-o play-icon" aria-hidden="true"></i>
+		<i class="far fa-play-circle play-icon" aria-hidden="true"></i>
 	</div>
 </div>
