@@ -1,28 +1,21 @@
-const gulp = require('gulp');
 
 var config = {
-	'source': './src',
-	'dist': './dist',
-	'build': './build/anred-theme',
-	'vendor': [
-		'bootstrap',
-		'font-awesome',
-		'hammerjs',
-		'image-set-polyfill',
-		'jquery',
-		'jquery-hammerjs',
-		'jquery-fancybox',
-		'malihu-custom-scrollbar-plugin',
-		'popper.js'
+	dirs: {
+		source: './src',
+		dist: './dist/anred-theme',
+		build: './build'
+	},
+	vendor: [
+		'jquery-hammerjs'
 	]
 }
 
-require('./tasks/clean')(gulp, config);
-require('./tasks/vendor')(gulp, config);
-require('./tasks/styles')(gulp, config);
-require('./tasks/scripts')(gulp, config);
-require('./tasks/templates')(gulp, config);
-require('./tasks/images')(gulp, config);
+require('./tasks/clean')( config );
+require('./tasks/vendor')( config );
+require('./tasks/styles')( config );
+require('./tasks/scripts')( config );
+require('./tasks/templates')( config );
+require('./tasks/images')( config );
 
-require('./tasks/build')(gulp, config);
-require('./tasks/watch')(gulp, config);
+require('./tasks/build')( config );
+require('./tasks/watch')( config );

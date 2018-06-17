@@ -1,3 +1,11 @@
-module.exports = function(gulp, config) {
-	gulp.task( 'build', ['vendor', 'scripts', 'styles', 'templates', 'images'] );
+const gulp = require('gulp');
+
+module.exports = function( config ) {
+	gulp.task( 'build', gulp.parallel(
+		'vendor', 
+		'scripts', 
+		'styles', 
+		'templates', 
+		'images'
+	) );
 };

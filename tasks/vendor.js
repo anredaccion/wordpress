@@ -1,3 +1,4 @@
+const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
@@ -7,49 +8,9 @@ const path = require('path');
 const minify = require('gulp-minify');
 const cleanCSS = require('gulp-clean-css');
 
-module.exports = function( gulp, config ) {
-	gulp.task('vendor', function() {
-		config.vendor.forEach(pkg => {
-			if (pkg == 'bootstrap' || pkg == 'font-awesome' || pkg == 'jquery-fancybox' ||
-				pkg == 'image-set-polyfill' ) {
-				gulp.start('vendor:' + pkg);
-				return;
-			}
-
-			name = getMainFilePath( './node_modules/' + pkg + '/package.json' );
-			source = path.relative( '.', './node_modules/' + pkg + '/' + name );
-
-			target = config.dist + '/vendor/' + pkg;
-
-			gulp.src( source )
-				.pipe( gulp.dest( target ) );
-
-			target = config.build + '/vendor/' + pkg;
-
-			gulp.src( source )
-				.pipe( minify({
-					ext: {
-						min:'.js'
-					},
-					noSource: true
-				}) )
-				.pipe( gulp.dest( target ) );
-				
-		});
-	});
-
-	gulp.task('vendor:bootstrap', function() {
-		gulp.src( './node_modules/bootstrap/dist/js/bootstrap.js' )
-			.pipe( gulp.dest( config.dist + '/vendor/bootstrap' ) )
-			.pipe( minify({
-				ext: {
-					min:'.js'
-				},
-				noSource: true
-			}) )
-			.pipe( gulp.dest( config.build + '/vendor/bootstrap' ) );
-
-		gulp.src(config.source + '/styles/bootstrap.scss')
+module.exports = function( config ) {
+	function bootstrap( done ) {
+		gulp.src(config.dirs.source + '/styles/bootstrap.scss')
 			.pipe( plumber() )
 			.pipe( sass( {
 				indentType: 'tab',
@@ -62,31 +23,14 @@ module.exports = function( gulp, config ) {
 					cascade: false,
 				})
 			] ) )
-			.pipe( gulp.dest( config.dist + '/vendor/bootstrap' ) )
+			.pipe( gulp.dest( config.dirs.build + '/vendor/bootstrap' ) )
 			.pipe( cleanCSS() )
-			.pipe( gulp.dest( config.build + '/vendor/bootstrap' ) );
-	});
+			.pipe( gulp.dest( config.dirs.dist + '/vendor/bootstrap' ) );
 
-	gulp.task('vendor:font-awesome', function() {
-		gulp.src(config.source + '/styles/font-awesome.scss')
-			.pipe( plumber() )
-			.pipe( sass() )
-			.pipe( postcss([
-				autoprefixer({
-					browsers: ['last 2 versions'],
-					cascade: false,
-				})
-			] ) )
-			.pipe( gulp.dest( config.dist + '/vendor/font-awesome' ) )
-			.pipe( cleanCSS() )
-			.pipe( gulp.dest( config.build + '/vendor/font-awesome' ) );
+		done();
+	};
 
-		gulp.src( './node_modules/font-awesome/fonts/**' )
-			.pipe( gulp.dest( config.dist + '/vendor/font-awesome' ) )
-			.pipe( gulp.dest( config.build + '/vendor/font-awesome' ) );
-	});
-
-	gulp.task('vendor:jquery-fancybox', function() {
+	function fancybox( done ) {
 		gulp.src( './node_modules/jquery-fancybox/source/scss/jquery.fancybox.scss')
 			.pipe( plumber() )
 			.pipe( sass() )
@@ -96,38 +40,49 @@ module.exports = function( gulp, config ) {
 					cascade: false,
 				})
 			] ) )
-			.pipe( gulp.dest( config.dist + '/vendor/jquery-fancybox/css' ) )
+			.pipe( gulp.dest( config.dirs.build + '/vendor/jquery-fancybox/css' ) )
 			.pipe( cleanCSS() )
-			.pipe( gulp.dest( config.build + '/vendor/jquery-fancybox/css' ) );
-
-		gulp.src( './node_modules/jquery-fancybox/source/js/jquery.fancybox.js' )
-			.pipe( gulp.dest( config.dist + '/vendor/jquery-fancybox/js' ) )
-			.pipe( minify({
-				ext: {
-					min:'.js'
-				},
-				noSource: true
-			}) )
-			.pipe( gulp.dest( config.build + '/vendor/jquery-fancybox/js' ) );
+			.pipe( gulp.dest( config.dirs.dist + '/vendor/jquery-fancybox/css' ) );
 
 		gulp.src( './node_modules/jquery-fancybox/source/img/**' )
-			.pipe( gulp.dest( config.dist + '/vendor/jquery-fancybox/img' ) )
-			.pipe( gulp.dest( config.build + '/vendor/jquery-fancybox/img' ) );
+			.pipe( gulp.dest( config.dirs.build + '/vendor/jquery-fancybox/img' ) )
+			.pipe( gulp.dest( config.dirs.dist + '/vendor/jquery-fancybox/img' ) );
 
-		
-	});
+		done();
+	};
 
-	gulp.task('vendor:image-set-polyfill', function() {
-		gulp.src( './node_modules/image-set-polyfill/image-set-polyfill.js' )
-			.pipe( gulp.dest( config.dist + '/vendor/image-set-polyfill/js' ) )
-			.pipe( minify({
-				ext: {
-					min:'.js'
-				},
-				noSource: true
-			}) )
-			.pipe( gulp.dest( config.build + '/vendor/image-set-polyfill/js' ) );
-	});
+	function others( done ) {
+		config.vendor.forEach(pkg => {
+			name = getMainFilePath( './node_modules/' + pkg + '/package.json' );
+			source = path.relative( '.', './node_modules/' + pkg + '/' + name );
+
+			target = config.dirs.build + '/vendor/' + pkg;
+
+			gulp.src( source )
+				.pipe( gulp.dest( target ) );
+
+			target = config.dirs.dist + '/vendor/' + pkg;
+
+			gulp.src( source )
+				.pipe( minify({
+					ext: {
+						min:'.js'
+					},
+					noSource: true
+				}) )
+				.pipe( gulp.dest( target ) );
+				
+		});
+
+		done();
+	}
+
+	gulp.task('vendor', gulp.parallel(
+		bootstrap,
+		fancybox,
+		others
+	));
+
 };
 
 function getMainFilePath( path ) {
