@@ -61,24 +61,6 @@ function anred_theme_setup() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __('Categorias - Contenido', 'anred'),
-		'id'            => 'categories',
-		'before_widget' => '<div class="container categories">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="title">',
-		'after_title'   => '</h3>'
-	) );
-
-	register_sidebar( array(
-		'name'          => __('Etiquetas - Contenido', 'anred'),
-		'id'            => 'tags',
-		'before_widget' => '<div class="container tags">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="title">',
-		'after_title'   => '</h3>'
-	) );
-
-	register_sidebar( array(
 		'name'          => __('Artículos - Barra Lateral', 'anred'),
 		'id'            => 'article',
 		'before_widget' => '<div class="container-fluid widget">',
