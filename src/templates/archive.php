@@ -16,7 +16,7 @@
 					elseif ( is_year() ) :
 						echo 'Archivo año ' . get_the_date( 'Y' );
 					else :
-						_e( 'Archives', 'twentyfourteen' );
+						_e( 'Archivos', 'anred' );
 					endif;
 				?>
 			</h1>
