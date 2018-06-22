@@ -17,8 +17,8 @@ class ANRed_Social_Follow extends WP_Widget {
 		'mastodon' => array(
 			'name' => 'Mastodon',
 			'icon' => 'fa-mastodon',
-			'mobile' => 'https://todon.nl/{id}',
-			'desktop' => 'https://todon.nl/{id}'
+			'mobile' => 'https://todon.nl/@{id}',
+			'desktop' => 'https://todon.nl/@{id}'
 		),
 		'telegram' => array(
 			'name' => 'Telegram',
