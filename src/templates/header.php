@@ -7,7 +7,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php get_template_part( 'partials/navbar' ); ?>
-<div class="main header">
+<div class="main header container">
 <?php
 $show_hero = get_theme_mod( 'anred_show_hero', true );
 if ( is_front_page() && is_home() && $show_hero)
