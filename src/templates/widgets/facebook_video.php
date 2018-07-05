@@ -23,13 +23,8 @@ class ANRed_Facebook_Video extends WP_Widget {
 
 		if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . $instance['title'] . $args['after_title'] . '<br>';
-/**
- * TODO:
- * - Averiguar porque .fb-video ignora margin-bottom y padding-bottom en celulares
- * - Hacer responsive
- */
 ?>
-<div class="fb-video" data-href="<?php echo $instance['url'] ?>" data-show-text="false"></div><br><br>
+<div class="fb-video" data-href="<?php echo $instance['url'] ?>" data-width="auto" data-show-text="false"></div><br><br>
 <?php
 		echo $args['after_widget'];
 	}
