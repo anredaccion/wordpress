@@ -1,9 +1,4 @@
 <?php
-$image = get_the_post_thumbnail_url();
-
-if ( ! $image ) {
-	$image = get_template_directory_uri() . "/images/logo-nada.png";
-}
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class( array( 'card', 'article-card' ) ); ?>>
 <?php if ( has_post_format( 'video' ) ): ?>
@@ -11,7 +6,23 @@ if ( ! $image ) {
 		<iframe class="embed-responsive-item" src="<?php echo anred_get_video_url( get_the_ID() ) ?>"></iframe>
 	</div>
 <?php else: ?>
-	<img class="card-img-top" src="<?php echo get_template_directory_uri(); ?>/images/placemark.png" data-src="<?php echo $image; ?>" alt="<?php the_title() ?>">
+	<img class="card-img-top" src="<?php echo get_template_directory_uri(); ?>/images/placemark.png" <?php
+	if ( has_post_thumbnail() ) {
+		$grid_size = get_query_var('grid_size');
+		$post_thumbnail_id = get_post_thumbnail_id();
+
+		echo 'data-srcset="';
+		$image_attributes = wp_get_attachment_image_src( $post_thumbnail_id, "frontpage-{$grid_size}x-big" );
+		echo $image_attributes[0] . ' ' . $image_attributes[1] . 'w, ';
+		$image_attributes = wp_get_attachment_image_src( $post_thumbnail_id, "frontpage-{$grid_size}x-medium" );
+		echo $image_attributes[0] . ' ' . $image_attributes[1] . 'w, ';
+		$image_attributes = wp_get_attachment_image_src( $post_thumbnail_id, "frontpage-{$grid_size}x-small" );
+		echo $image_attributes[0] . ' ' . $image_attributes[1] . 'w';
+		echo '"';
+	} else {
+		echo 'data-src="' . get_template_directory_uri() . '/images/logo-nada.png"';
+	}
+?> alt="<?php  the_title() ?>" />
 <?php endif; ?>
 	<div class="card-body">
 		<h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h5>

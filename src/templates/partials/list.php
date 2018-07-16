@@ -30,14 +30,18 @@ function make_query_params( $counter, $offset = 0 ) {
 
 $query = new WP_Query( make_query_params( 4 ) );
 
+$grid_size = 2;
+set_query_var( 'grid_size', $grid_size );
+
 if ( $query->have_posts() ) {
 
 	$i = 0;
 	while ( $query->have_posts() ) {
 		$query->the_post();
 		
-		if ($i % 2 == 0)
+		if ($i % 2 == 0) {
 			echo '<div class="card-deck article-deck">';
+		}
 
 		get_template_part( 'partials/card' );
 		$i++;
@@ -51,6 +55,9 @@ if ( $query->have_posts() ) {
 }
 
 $query = new WP_Query( make_query_params( 6, 4 ) );
+
+$grid_size = 3;
+set_query_var( 'grid_size', $grid_size );
 
 if ( $query->have_posts() ) {
 
