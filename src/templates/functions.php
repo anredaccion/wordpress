@@ -172,3 +172,20 @@ function anred_get_latest_post_count() {
 
 	return $count;
 }
+
+function anred_custom_image_sizes( $size_names ) {
+	$new_sizes = array(
+		'article-big'         => 'Artículo - Grande',
+		'article-medium'      => 'Artículo - Mediana',
+		'article-small'       => 'Artículo - Chica',
+		'frontpage-2x-big'    => 'Página principal - 2x - Grande',
+		'frontpage-2x-medium' => 'Página principal - 2x - Mediana',
+		'frontpage-2x-small'  => 'Página principal - 2x - Chica',
+		'frontpage-3x-big'    => 'Página principal - 3x - Grande',
+		'frontpage-3x-medium' => 'Página principal - 3x - Mediana',
+		'frontpage-3x-small'  => 'Página principal - 3x - Chica',
+	);
+
+	return array_merge( $size_names, $new_sizes );
+}
+add_filter( 'image_size_names_choose', 'anred_custom_image_sizes' );
