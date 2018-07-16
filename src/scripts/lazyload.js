@@ -26,6 +26,13 @@
 	}
 
 	function preloadImage( e ) {
-		e.setAttribute('src', e.getAttribute('data-src'));
+		if ( 'src' in e.dataset ) {
+			e.setAttribute('src', e.getAttribute('data-src'));
+			e.removeAttribute('data-src');
+		} else if ( 'srcset' in e.dataset ) {
+			e.setAttribute('srcset', e.getAttribute('data-srcset'));
+			e.removeAttribute('data-srcset');
+			e.removeAttribute('src');
+		}
 	}
 })( jQuery );
