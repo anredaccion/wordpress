@@ -33,7 +33,7 @@ function anred_add_theme_scripts() {
 	wp_enqueue_script( 'jquery-fancybox', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js', array(), false, true );
 	wp_enqueue_script( 'anred', get_template_directory_uri() . '/scripts/anred.js', array(), false, true );
 
-	wp_enqueue_script( 'addthis', '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5473d03b29cf0382', array(), false, true );
+	wp_enqueue_script( 'addthis', 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5473d03b29cf0382&async=1&domready=1', array(), false, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'anred_add_theme_scripts' );
