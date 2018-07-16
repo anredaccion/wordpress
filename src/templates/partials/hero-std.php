@@ -1,6 +1,5 @@
 <div class="carousel-item <?php echo ($current_post == 0 ? 'active' : ''); ?>">
 	<picture>
-		<source media="(min-width: 1101px)" srcset="<?php the_post_thumbnail_url( 'full' ) ?>">
 		<source media="(min-width: 826px)" srcset="<?php the_post_thumbnail_url( 'post-thumbnail' ) ?>">
 		<source media="(min-width: 691px)" srcset="<?php the_post_thumbnail_url( 'article-large' ) ?>">
 		<source media="(min-width: 511px)" srcset="<?php the_post_thumbnail_url( 'article-medium' ) ?>">
