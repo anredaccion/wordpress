@@ -122,7 +122,19 @@ function anred_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form' ) );
 	add_theme_support( 'post-formats', array( 'video', 'gallery' ) );
 
-	set_post_thumbnail_size(640, 480, array( 'center', 'center'));
+	add_image_size( 'article-big', 825 );
+	add_image_size( 'article-medium', 690 );
+	add_image_size( 'article-small', 510 );
+
+	add_image_size( 'frontpage-2x-big', 383, 287, array( 'center', 'center') );
+	add_image_size( 'frontpage-2x-medium', 315, 237, array( 'center', 'center') );
+	add_image_size( 'frontpage-2x-small', 225, 169, array( 'center', 'center') );
+
+	add_image_size( 'frontpage-3x-big', 245, 184, array( 'center', 'center') );
+	add_image_size( 'frontpage-3x-medium', 200, 150, array( 'center', 'center') );
+	add_image_size( 'frontpage-3x-small', 140, 105, array( 'center', 'center') );
+
+	add_image_size( 'post-thumbnail', 1100, 0, false );
 }
 
 add_action( 'after_setup_theme', 'anred_theme_setup' );
@@ -144,19 +156,3 @@ function anred_register_widgets() {
 add_action( 'widgets_init', 'anred_register_widgets' );
 
 add_filter( 'is_protected_meta', '__return_false' ); 
-
-function anred_get_latest_post_count() {
-	$count = 0;
-
-	$widget_instances = get_option('widget_anred_content_latest_2_cols');
-	foreach ($widget_instances as $instance) {
-		$count += $instance['count'];
-	}
-
-	$widget_instances = get_option('widget_anred_content_latest_3_cols');
-	foreach ($widget_instances as $instance) {
-		$count += $instance['count'];
-	}
-
-	return $count;
-}
