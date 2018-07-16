@@ -39,6 +39,7 @@ function anred_add_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'anred_add_theme_scripts' );
 
 function anred_theme_setup() {
+
 	register_nav_menus( array(
 		'primary_navigation' => 'Menú principal'
 	) );
@@ -135,6 +136,8 @@ function anred_theme_setup() {
 	add_image_size( 'frontpage-3x-small', 140, 105, array( 'center', 'center') );
 
 	add_image_size( 'post-thumbnail', 1100, 0, false );
+
+	add_editor_style( get_template_directory_uri() . '/editor-style.css' );
 }
 
 add_action( 'after_setup_theme', 'anred_theme_setup' );

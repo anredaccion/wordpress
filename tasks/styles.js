@@ -41,6 +41,20 @@ module.exports = function( config ) {
 				.pipe( gulp.dest( config.dirs.dist ) );
 
 			done();
+		},
+		function editor( done ) {
+			gulp.src( config.dirs.source + '/styles/editor-style.scss' )
+				.pipe( sass() )
+				.pipe( postcss([
+					autoprefixer({
+						browsers: ['last 2 versions'],
+						cascade: false,
+					})
+				] ) )
+				.pipe( cleanCSS() )
+				.pipe( gulp.dest( config.dirs.build ) )
+				.pipe( gulp.dest( config.dirs.dist ) );
+			done();
 		}
 	) );
 };
