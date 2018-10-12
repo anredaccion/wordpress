@@ -1,21 +1,33 @@
+const gulp = require( 'gulp' );
 
-var config = {
-	dirs: {
-		source: './src',
-		dist: './dist/anred-theme',
-		build: './build'
-	},
-	vendor: [
-		'jquery-hammerjs'
-	]
-}
+require( 'dotenv' ).config( '.env' );
 
-require('./tasks/clean')( config );
-require('./tasks/vendor')( config );
-require('./tasks/styles')( config );
-require('./tasks/scripts')( config );
-require('./tasks/templates')( config );
-require('./tasks/images')( config );
+require( './tasks/clean' );
+require( './tasks/images' );
+require( './tasks/linter' );
+require( './tasks/scripts' );
+require( './tasks/stage' );
+require( './tasks/styles' );
+require( './tasks/templates' );
+require( './tasks/vendor' );
 
-require('./tasks/build')( config );
-require('./tasks/watch')( config );
+gulp.task(
+	'build',
+	gulp.series(
+		'clean',
+		'linter',
+		gulp.parallel(
+			'images',
+			'templates',
+			'scripts',
+			'styles'
+		)
+	)
+);
+
+gulp.task( 'watch', function() {
+	gulp.watch( 'src/templates/**/*.php', gulp.series( 'templates' ) );
+	gulp.watch( 'src/styles/**/*.scss', gulp.series( 'styles' ) );
+	gulp.watch( 'src/scripts/**/*.js', gulp.series( 'scripts' ) );
+	gulp.watch( 'src/images/*', gulp.series( 'images' ) );
+});

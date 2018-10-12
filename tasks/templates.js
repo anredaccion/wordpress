@@ -1,11 +1,11 @@
-const gulp = require('gulp');
+const gulp = require( 'gulp' );
 
-module.exports = function( config ) {
-	gulp.task( 'templates', function ( done ) {
-		gulp.src( config.dirs.source + '/templates/**/*.php' )
-			.pipe( gulp.dest( config.dirs.build ) )
-			.pipe( gulp.dest( config.dirs.dist ) );
+const config = require( '../config/gulp' );
+const options = config.getConfigKeys();
 
-		done();
-	});
-};
+gulp.task( 'templates', function( done ) {
+	gulp.src( 'src/templates/**/*.php' )
+		.pipe( gulp.dest( options.dest ) );
+
+	done();
+});

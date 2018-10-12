@@ -2,30 +2,27 @@
   "name": "anred",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
-  "directories": {
-    "lib": "lib"
-  },
   "devDependencies": {
-    "autoprefixer": "^7.2.6",
-    "bootstrap": "^4.0.0",
-    "browser-sync": "^2.23.6",
+    "bootstrap": "^4.1.3",
     "del": "^3.0.0",
+    "dotenv": "^6.0.0",
+    "eslint-config-wordpress": "^2.0.0",
     "gulp": "^4.0.0",
-    "gulp-beautify": "^2.0.1",
-    "gulp-clean-css": "^3.9.4",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
-    "gulp-minify": "^3.0.2",
     "gulp-plumber": "^1.2.0",
-    "gulp-postcss": "^7.0.1",
     "gulp-sass": "^4.0.1",
-    "jquery-fancybox": "^3.1.0",
-    "jquery-hammerjs": "^2.0.0"
+    "gulp-sftp": "^0.1.5",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-terser": "^1.1.5",
+    "materialize-css": "^1.0.0",
+    "yargs": "^12.0.2"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Roberto Vaccaro",
-  "license": "GPL",
-  "dependencies": {}
+  "dependencies": {},
+  "license": "GPL-3.0",
+  "author": "Roberto Vaccaro <roberto.vaccaro@gmail.com>"
 }

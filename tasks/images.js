@@ -1,23 +1,23 @@
-const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
+const gulp = require( 'gulp' );
+const gulpif = require( 'gulp-if' );
+const imagemin = require( 'gulp-imagemin' );
 
-module.exports = function( config ) {
-	gulp.task( 'images', gulp.parallel(
-		function screenshot( done ) {
-			gulp.src( config.dirs.source + '/images/screenshot.png' )
-				.pipe(imagemin())
-				.pipe( gulp.dest( config.dirs.build ) )
-				.pipe( gulp.dest( config.dirs.dist ) );
+const config = require( '../config/gulp' );
+const options = config.getConfigKeys();
 
-			done();
-		},
-		function others( done ) {
-			gulp.src( [ config.dirs.source + '/images/**', '!' + config.dirs.source + '/images/screenshot.png' ] )
-				.pipe(imagemin())
-				.pipe( gulp.dest( config.dirs.build + '/images' ) )
-				.pipe( gulp.dest( config.dirs.dist + '/images' ) );
+gulp.task( 'images', gulp.parallel(
+	function screenshot( done ) {
+		gulp.src( 'src/images/screenshot.png' )
+			.pipe( gulpif( options.imagemin, imagemin({ verbose: options.debug }) ) )
+			.pipe( gulp.dest( options.dest ) );
 
-			done();
-		}
-	) );
-};
+		done();
+	},
+	function others( done ) {
+		gulp.src([ 'src/images/**/*', '!src/images/screenshot.png' ])
+			.pipe( gulpif( options.imagemin, imagemin({ verbose: options.debug }) ) )
+			.pipe( gulp.dest( options.dest + '/images' ) );
+
+		done();
+	}
+) );

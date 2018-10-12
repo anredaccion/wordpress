@@ -1,0 +1,9 @@
+{
+	"extends": "wordpress",
+	"rules": {
+		"linebreak-style": "off"
+	},
+	"parserOptions": {
+		"ecmaVersion": 6
+	}
+}

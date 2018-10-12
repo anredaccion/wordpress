@@ -1,60 +1,45 @@
-const gulp = require('gulp');
-const bs = require('browser-sync');
-const plumber = require('gulp-plumber');
-const sass = require('gulp-sass');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+const autoprefixer = require( 'gulp-autoprefixer' );
+const cleancss = require( 'gulp-clean-css' );
+const gulp = require( 'gulp' );
+const gulpif = require( 'gulp-if' );
+const gzip = require( 'gulp-gzip' );
+const plumber = require( 'gulp-plumber' );
+const sass = require( 'gulp-sass' );
+const sourcemaps = require( 'gulp-sourcemaps' );
 
-module.exports = function( config ) {
-	gulp.task('styles', gulp.series(
-		function build( done ) {
-			gulp.src( config.dirs.source + '/styles/style.scss' )
-				.pipe( plumber() )
-				.pipe( sass( {
-					indentType: 'tab',
-					indentWidth: 1,
-					outputStyle: 'expanded',
-				} ) ).on( 'error', sass.logError)
-				.pipe( postcss([
-					autoprefixer({
-						browsers: ['last 2 versions'],
-						cascade: false,
-					})
-				] ) )
-				.pipe( plumber.stop() )
-				.pipe( gulp.dest( config.dirs.build ) )
-				.pipe( bs.stream() );
-			
-			done();
-		},
-		function dist( done ) {
-			gulp.src( config.dirs.source + '/styles/style.scss' )
-				.pipe( sass() )
-				.pipe( postcss([
-					autoprefixer({
-						browsers: ['last 2 versions'],
-						cascade: false,
-					})
-				] ) )
-				.pipe( cleanCSS() )
-				.pipe( gulp.dest( config.dirs.dist ) );
+const config = require( '../config/gulp' );
+const options = config.getConfigKeys();
 
-			done();
-		},
-		function editor( done ) {
-			gulp.src( config.dirs.source + '/styles/editor-style.scss' )
-				.pipe( sass() )
-				.pipe( postcss([
-					autoprefixer({
-						browsers: ['last 2 versions'],
-						cascade: false,
-					})
-				] ) )
-				.pipe( cleanCSS() )
-				.pipe( gulp.dest( config.dirs.build ) )
-				.pipe( gulp.dest( config.dirs.dist ) );
-			done();
-		}
-	) );
-};
+gulp.task( 'styles', gulp.parallel(
+	function main( done ) {
+		gulp.src( 'src/styles/style.scss' )
+			.pipe( plumber() )
+			.pipe( gulpif( options.sourcemaps, sourcemaps.init() ) )
+			.pipe( sass( options.sass ) )
+			.pipe( autoprefixer( options.autoprefixer ) )
+			.pipe( gulpif( options.cleancss, cleancss() ) )
+			.pipe( gulpif( options.sourcemaps, sourcemaps.write( './' ) ) )
+			.pipe( gulp.dest( options.dest ) )
+			.pipe( gulpif( options.gzip, gzip() ) )
+			.pipe( gulpif( options.gzip, gulp.dest( options.dest ) ) );
+
+		done();
+	},
+	function others( done ) {
+		gulp.src([
+			'src/styles/*.scss',
+			'!src/styles/style.scss'
+		])
+			.pipe( plumber() )
+			.pipe( gulpif( options.sourcemaps, sourcemaps.init() ) )
+			.pipe( sass( options.sass ) )
+			.pipe( autoprefixer( options.autoprefixer ) )
+			.pipe( gulpif( options.cleancss, cleancss() ) )
+			.pipe( gulpif( options.sourcemaps, sourcemaps.write( './' ) ) )
+			.pipe( gulp.dest( options.dest + '/styles/' ) )
+			.pipe( gulpif( options.gzip, gzip() ) )
+			.pipe( gulpif( options.gzip, gulp.dest( options.dest + '/styles/' ) ) );
+
+		done();
+	}
+) );

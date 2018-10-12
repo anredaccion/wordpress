@@ -1,5 +1,8 @@
 .vscode/
-dist/
 build/
+dist/
 node_modules/
+vendor/
+composer.lock
 package-lock.json
+.env

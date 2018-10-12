@@ -1,26 +1,13 @@
-const gulp = require('gulp');
-const del = require('del');
+const del = require( 'del' );
+const gulp = require( 'gulp' );
 
-module.exports = function( config ) {
-	gulp.task( 'clean', function () {
-		return del([
-			config.dirs.build + '/**',
-			'!' + config.dirs.build,
-			'!' + config.dirs.build + '/vendor/**',
+const config = require( '../config/gulp' );
+const options = config.getConfigKeys();
 
-			config.dirs.dist + '/**',
-			'!' + config.dirs.dist,
-			'!' + config.dirs.dist + '/vendor/**',
-		]);
-	});
-
-	gulp.task( 'clean-vendor', function () {
-		return del([
-			config.dirs.build + '/vendor/**',
-			'!' + config.dirs.build + '/vendor',
-
-			config.dirs.dist + '/vendor/**',
-			'!' + config.dirs.dist + '/vendor',
-		]);
-	});
-};
+gulp.task( 'clean', function() {
+	return del([
+		options.dest + '/**',
+		'!' + options.dest,
+		'!' + options.dest + '/vendor/**'
+	]);
+});
