@@ -1,19 +1,9 @@
 (function($) {
 	$( document ).ready( function() {
-		$('.navbar-primary').mCustomScrollbar({
-			theme: "minimal",
-			
-		});
-
-		$('.btn-expand-sidebar').click(function(e) {
-			$('.navbar-primary').addClass('active');
-			$('.overlay').fadeIn();
-		});
 		$('.overlay').click(function(e) {
 			$('.navbar-primary').removeClass('active');
 			$('.overlay').fadeOut();
 		});
-
 
 		if ( $( "#hero-news" ).length ) {
 			$( ".carousel-item" ).hammer()
