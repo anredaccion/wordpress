@@ -1,5 +1,6 @@
-<br><br>
-<p class="float-right go-up"><a href="#">Ir arriba</a></p>
+<div class="container">
+	<p class="float-right go-up"><a href="#">Ir arriba</a></p>
+</div>
 <?php if (is_single()): ?>
 <div class="addthis_sharing_toolbox bg-light footer"></div>
 <?php endif; ?>
