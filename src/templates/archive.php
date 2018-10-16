@@ -8,17 +8,17 @@
 		<div class="col-md-9 col-sm-12">
 
 			<h1 class="page-title">
-				<?php
+			<?php
 				if ( is_day() ) :
 						echo 'Archivo del '. get_the_date( 'l j F, Y');
-					elseif ( is_month() ) :
-						echo 'Archivo de ' . get_the_date( 'F Y' );
-					elseif ( is_year() ) :
-						echo 'Archivo año ' . get_the_date( 'Y' );
-					else :
-						_e( 'Archivos', 'anred' );
-					endif;
-				?>
+				elseif ( is_month() ) :
+					echo 'Archivo de ' . get_the_date( 'F Y' );
+				elseif ( is_year() ) :
+					echo 'Archivo año ' . get_the_date( 'Y' );
+				else :
+					_e( 'Archivos', 'anred' );
+				endif;
+			?>
 			</h1>
 
 			<?php if ( have_posts() ) : ?>
