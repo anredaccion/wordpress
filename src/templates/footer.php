@@ -20,7 +20,7 @@
 <div id="fb-root"></div>
 <br><br><br>
 <footer class="text-muted">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
 				<?php dynamic_sidebar( 'footer-1' ); ?>
