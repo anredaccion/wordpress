@@ -41,3 +41,12 @@ function anred_paging_nav() {
 	<?php
 	endif;
 }
+
+function anred_simple_nav() {
+	?>
+	<nav class="navigation paging-navigation" role="navigation">
+		<div class="nav-previous alignleft"><?php next_posts_link( '&#8592; Anteriores' ); ?></div>
+		<div class="nav-next alignright"><?php previous_posts_link( 'Siguientes &#8594;' ); ?></div>
+	</nav>
+	<?php
+}
