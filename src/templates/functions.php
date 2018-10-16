@@ -81,13 +81,6 @@ function anred_theme_setup() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __('Redes Sociales - Menú', 'anred'),
-		'id'            => 'header-social',
-		'before_widget' => '<section class="widget %1$s %2$s">',
-		'after_widget'  => '</section>'
-	) );
-
-	register_sidebar( array(
 		'name'          => __('Pié de página - Lugar 1', 'anred'),
 		'id'            => 'footer-1',
 		'before_widget' => '<section class="widget %1$s %2$s">',
