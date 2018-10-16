@@ -1,9 +1,29 @@
+li.widget {
+	list-style: none;
+}
+
 .widget_anred_social_follow {
-	text-align: center;
+	ul {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+		padding: 0;
+	}
+
+	li {
+		display: table-cell;
+		text-align: center;
+	}
+
 	a {
+		display: block;
 		font-size: 1.5em;
-		color: #fff;
+		color: #111;
 		padding: .25em;
+	}
+
+	a:hover {
+		color: $color-anred;
 	}
 }
 

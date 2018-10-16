@@ -49,15 +49,17 @@ class ANRed_Social_Follow extends WP_Widget {
 	 
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
+		echo '<ul>';
 		foreach ($instance as $id => $data) {
 			if (wp_is_mobile()) {
-				echo '<a href="' . str_replace('{id}', urlencode($data), $this->list[$id]['mobile']) . '" alt="' . $this->list[$id]['name']  . '">';
+				echo '<li><a href="' . str_replace('{id}', urlencode($data), $this->list[$id]['mobile']) . '" alt="' . $this->list[$id]['name']  . '">';
 			} else {
-				echo '<a href="' . str_replace('{id}', urlencode($data), $this->list[$id]['desktop']) . '" alt="' . $this->list[$id]['name']  . '" target="_blank" rel="nofollow">';
+				echo '<li><a href="' . str_replace('{id}', urlencode($data), $this->list[$id]['desktop']) . '" alt="' . $this->list[$id]['name']  . '" target="_blank" rel="nofollow">';
 			}
 			echo '<i class="fab ' . $this->list[$id]['icon']  . '"></i>';
-			echo '</a>';
+			echo '</a></li>';
 		}
+		echo '</ul>';
 		echo $args['after_widget'];
 	}
 			 

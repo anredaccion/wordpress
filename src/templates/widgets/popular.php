@@ -52,7 +52,7 @@ class ANRed_Populares extends WP_Widget {
 				echo '<a href="' . get_the_permalink() . '">' . get_the_title() . '</a>';
 				echo '</li>';
 			}
-			echo '</ul>';
+			echo '</ol>';
 			echo $args['after_widget'];
 		}
 

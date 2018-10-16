@@ -82,8 +82,3 @@ function anred_customize_register( $wp_customize ) {
 }
 
 add_action( 'customize_register', 'anred_customize_register' );
-
-function anred_customize_preview_js() {
-	wp_enqueue_script( 'anred_customizer', get_template_directory_uri() . '/scripts/customizer.js', array( 'customize-preview' ), '20180225-1', true );
-}
-add_action( 'customize_preview_init', 'anred_customize_preview_js' );
