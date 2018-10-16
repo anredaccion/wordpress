@@ -192,11 +192,3 @@ function anred_custom_image_sizes( $size_names ) {
 	return array_merge( $size_names, $new_sizes );
 }
 add_filter( 'image_size_names_choose', 'anred_custom_image_sizes' );
-
-function anred_menu_item_classes( $classes, $item, $args, $depth ) {
-	unset($classes);
-	$classes[] = 'dropdown-item';
-	return $classes;
-}
-
-add_filter( 'nav_menu_css_class', 'anred_menu_item_classes', 10, 4 );
