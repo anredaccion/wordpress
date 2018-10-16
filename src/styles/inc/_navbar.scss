@@ -2,14 +2,31 @@
 	padding: 0;
 	z-index: 9997;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	background-color: rgba(248, 249, 250, .95);
 
 	.navbar-toggler {
 		border: none;
+	}
+
+	.nav-link {
+		display: block;
+		padding: 0.5rem 1rem;
+	}
+
+	.dropdown-menu {
+		background-color: rgba(255, 255, 255, .95);
 	}
 }
 
 .admin-bar .navbar {
 	margin-top: 32px;
+}
+
+.search-form .btn {
+	background-color: #fff;
+	color: $color-anred;
+	border: 1px solid #ced4da;
+	border-left: none;
 }
 
 .navbar-brand .logo {

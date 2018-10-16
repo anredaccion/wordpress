@@ -2,7 +2,7 @@
 $custom_logo_id = get_theme_mod( 'custom_logo' );
 $logo = wp_get_attachment_image_src( $custom_logo_id , 'medium' );
 ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 	<div class="container">
 			<a class="navbar-brand" href="<?php echo get_site_url(); ?>"><img src="<?php echo $logo[0] ?>" class="logo" alt="Logo Sitio"></a>
 			
