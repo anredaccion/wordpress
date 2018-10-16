@@ -27,7 +27,7 @@ class ANRed_Comunicados extends WP_Widget {
 			echo $args['before_widget'];
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . $instance['title'] . $args['after_title'];
-			echo '<ul class="comunicados">';
+			echo '<ul>';
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$who = get_post_meta(get_the_ID(), 'who', true);

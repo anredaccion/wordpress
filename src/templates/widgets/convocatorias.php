@@ -45,7 +45,7 @@ class ANRed_Convocatorias extends WP_Widget {
 			echo $args['before_widget'];
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . $instance['title'] . $args['after_title'];
-			echo '<ul class="convocatorias">';
+			echo '<ul>';
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$date = get_post_meta(get_the_ID(), 'when-date', true);

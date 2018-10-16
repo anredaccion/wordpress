@@ -1,5 +1,10 @@
-li.widget {
+.widget {
+	margin-bottom: 1em;
 	list-style: none;
+}
+
+.widget:not(:first-child) {
+	margin-top: 1em;
 }
 
 .widget_anred_social_follow {
@@ -27,13 +32,15 @@ li.widget {
 	}
 }
 
-.convocatorias {
-	list-style: none;
-	padding: 0 15px;
-	font-size: .85em;
-	color: #6c757d;
-	margin-top: .5em;
-	text-align: justify;
+.widget_anred_convocatorias {
+	ul {
+		list-style: none;
+		padding: 0 15px;
+		font-size: .85em;
+		color: #6c757d;
+		margin-top: .5em;
+		text-align: justify;
+	}
 
 	li:before {
 		content: "-";
@@ -45,26 +52,26 @@ li.widget {
 	}
 }
 
-.comunicados {
-	list-style: none;
-	padding: 0 15px;
-	font-size: .85em;
-	color: #6c757d;
-	margin-top: .5em;
-	text-align: justify;
+.widget_anred_comunicados {
+	ul {
+		list-style: none;
+		padding: 0 15px;
+		font-size: .85em;
+		color: #6c757d;
+		margin-top: .5em;
+		text-align: justify;
+	}
 
 	li {
 		padding-bottom: .75em;
 	}
 }
 
-.widget {
-	margin-bottom: 2em;
-}
-
-.populares {
-	font-size: .85em;
-	font-weight: 700;
+.widget_anred_populares {
+	ol {
+		font-size: .85em;
+		font-weight: 700;
+	}
 
 	li {
 		padding-bottom: .75em;

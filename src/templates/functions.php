@@ -54,23 +54,17 @@ function anred_theme_setup() {
 
 	register_sidebar( array(
 		'name'          => __('Página Principal - Barra Lateral', 'anred'),
-		'id'            => 'sidebar',
-		'before_title'  => '<h3 class="title">',
-		'after_title'   => '</h3>'
+		'id'            => 'sidebar'
 	) );
 
 	register_sidebar( array(
 		'name'          => __('Artículos - Barra Lateral', 'anred'),
-		'id'            => 'article',
-		'before_title'  => '<h3 class="title">',
-		'after_title'   => '</h3>'
+		'id'            => 'article'
 	) );
 
 	register_sidebar( array(
 		'name'          => __('Archivo - Barra Lateral', 'anred'),
-		'id'            => 'archive',
-		'before_title'  => '<h3 class="title">',
-		'after_title'   => '</h3>'
+		'id'            => 'archive'
 	) );
 
 	register_sidebar( array(
@@ -128,18 +122,14 @@ function anred_theme_setup() {
 
 add_action( 'after_setup_theme', 'anred_theme_setup' );
 
-/*
-** FIXME:
-** - Development feature. Corregir antes de sacar a producción.
-*/
 function anred_register_widgets() {
-	$widgets = array_diff(scandir(get_template_directory() . '/widgets'), array('..', '.'));
-	foreach ($widgets as $file) {
-		if (!$filepath = locate_template('widgets/' . $file))
-			trigger_error(sprintf(__('Error localizando el widget %s para su inclusión', 'anred'), $file), E_USER_ERROR);
-		
-			require_once $filepath;
-	}
+	include get_template_directory() . '/widgets/comunicados.php';
+	include get_template_directory() . '/widgets/convocatorias.php';
+	include get_template_directory() . '/widgets/facebook_video.php';
+	include get_template_directory() . '/widgets/facebook.php';
+	include get_template_directory() . '/widgets/populares.php';
+	include get_template_directory() . '/widgets/social_follow.php';
+	include get_template_directory() . '/widgets/twitter.php';
 }
 
 add_action( 'widgets_init', 'anred_register_widgets' );

@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9 col-sm-12">
+			<?php dynamic_sidebar( 'content' ); ?>
 			<?php get_template_part( 'partials/list' ); ?>
 			<?php anred_simple_nav() ?>
 		</div>
