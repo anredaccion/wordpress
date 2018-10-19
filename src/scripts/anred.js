@@ -32,6 +32,7 @@
 
 		$(window).resize(function() {
 			$('#videoModal').modal('handleUpdate');
+			handleNavbarUpdate();
 		});
 
 		$('.gallery-item a').fancybox({
@@ -51,4 +52,16 @@
 			$('.content-remaining').html(maxlength - currentLength + '/' + maxlength);
 		}
 	});
+
+	handleNavbarUpdate()
+
+	function handleNavbarUpdate() {
+		if ($('.navbar.fixed-top').width() < 576) {
+			$('.navbar.fixed-top').toggleClass('fixed-top fixed-bottom');
+		}
+
+		if ($('.navbar.fixed-bottom').width() >= 576) {
+			$('.navbar.fixed-bottom').toggleClass('fixed-bottom fixed-top');
+		}
+	}
 })( jQuery );
