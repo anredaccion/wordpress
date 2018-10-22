@@ -25,6 +25,7 @@ $query = new WP_Query( $search_query );
 		</li>
 	<?php endwhile; ?>
 	</ul>
+	<?php anred_paging_nav() ?>
 <?php endif; ?>
 </div>
 <?php get_footer(); ?>
