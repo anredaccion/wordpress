@@ -9,6 +9,14 @@
 	}
 }
 
+.container.category {
+	margin-top: 1em;
+
+	@media screen and (min-width:576px) {
+		margin-top: 70px;
+	}
+}
+
 .carousel {
 	margin-bottom: 1rem;
 

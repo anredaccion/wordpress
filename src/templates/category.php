@@ -6,7 +6,7 @@ $term = get_term_by(
 );
 get_header();
 ?>
-<div class="container">
+<div class="container category">
 	<div class="row">
 		<div class="col-12">
 			<h1><?php echo $term->name; ?></h1>
