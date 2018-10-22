@@ -20,7 +20,7 @@ $query = new WP_Query( $search_query );
 				}
 			?>
 			<h5><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-			<div class="date text-muted"><i class="fa fa-calendar"></i> <?php the_date() ?></div>
+			<div class="date text-muted"><i class="fa fa-calendar"></i> <?php echo get_the_date(); ?></div>
 			<?php the_excerpt(); ?>
 		</li>
 	<?php endwhile; ?>
