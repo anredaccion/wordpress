@@ -1,7 +1,12 @@
 .main.header {
-	padding-top: 60px;
 	text-align: center;
 	font-family: 'Libre Franklin', sans-serif;
+
+	margin-top: 1em;
+
+	@media screen and (min-width:576px) {
+		margin-top: 70px;
+	}
 }
 
 .carousel {
