@@ -2,7 +2,7 @@
 	<p class="float-right go-up"><a href="#">Ir arriba</a></p>
 </div>
 <?php if (is_single()): ?>
-<div class="addthis_sharing_toolbox bg-light footer"></div>
+<div class="addthis_sharing_toolbox footer"></div>
 <?php endif; ?>
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg">
