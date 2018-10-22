@@ -28,7 +28,7 @@
 		<h5 class="card-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h5>
 	</div>
 	<div class="card-footer text-muted">
-		<div class="addthis_toolbox addthis_default_style float-left" data-url="<?php the_permalink() ?>">
+		<div class="addthis_toolbox addthis_default_style addthis_16x16_style float-left" addthis:url="<?php the_permalink() ?>" addthis:title="<?php the_title_attribute(); ?>">
 			<a class="addthis_button_twitter"></a>
 			<a class="addthis_button_facebook"></a>
 			<a class="addthis_button_whatsapp"></a>
