@@ -117,7 +117,7 @@ function anred_theme_setup() {
 
 	add_image_size( 'post-thumbnail', 1100, 0, false );
 
-	add_editor_style( get_template_directory_uri() . '/editor-style.css' );
+	add_editor_style( get_template_directory_uri() . '/styles/editor-style.css' );
 }
 
 add_action( 'after_setup_theme', 'anred_theme_setup' );
