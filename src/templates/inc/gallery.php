@@ -90,7 +90,7 @@ function anred_gallery($output, $attr, $instance ) {
 	foreach ( $attachments as $id => $attachment ) {
 		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
 
-		$image_output = "<a href='" . wp_get_attachment_url( $id ) . "' class='fancybox' rel='gallery" . $post->ID . "'> " . wp_get_attachment_image($id, $atts['size'], false, $attr ) . "</a>";
+		$image_output = "<a href='" . wp_get_attachment_url( $id ) . "' rel='gallery" . $post->ID . "'> " . wp_get_attachment_image($id, $atts['size'], false, $attr ) . "</a>";
 		
 		$image_meta  = wp_get_attachment_metadata( $id );
 		$orientation = '';
