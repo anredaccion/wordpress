@@ -17,7 +17,6 @@ include get_template_directory() . '/inc/oembed.php';
 function anred_add_theme_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/styles/bootstrap.css' );
 	wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.0.13/css/all.css' );
-	wp_enqueue_style( 'jquery-fancybox', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.css' );
 	wp_enqueue_style( 'anred', get_stylesheet_uri() );
 
 	wp_deregister_script( 'jquery' );
@@ -25,11 +24,8 @@ function anred_add_theme_scripts() {
 	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.3.1.slim.min.js', array(), false, true );
 	wp_enqueue_script( 'preload', get_template_directory_uri() . '/scripts/preload.js', array(), false, true );
 	wp_enqueue_script( 'lazyload', get_template_directory_uri() . '/scripts/lazyload.js', array(), false, true );
-	wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array(), false, true );
-	wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array(), false, true );
-	wp_enqueue_script( 'hammer', 'https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js', array(), false, true );
-	wp_enqueue_script( 'jquery-hammer', get_template_directory_uri() . '/vendor/jquery.hammer.js/jquery.hammer.js', array(), false, true );
-	wp_enqueue_script( 'jquery-fancybox', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js', array(), false, true );
+	wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', array(), false, true );
+	wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', array(), false, true );
 	wp_enqueue_script( 'anred', get_template_directory_uri() . '/scripts/anred.js', array(), false, true );
 
 	wp_enqueue_script( 'addthis', 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5473d03b29cf0382&async=1&domready=1', array(), false, true );
