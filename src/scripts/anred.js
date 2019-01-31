@@ -5,13 +5,6 @@
 			$('.overlay').fadeOut();
 		});
 
-		if ( $( "#hero-news" ).length ) {
-			$( ".carousel-item" ).hammer()
-				.on("swipeleft", function () { $( "#hero-news" ).carousel('next') } )
-				.on("swiperight", function () { $( "#hero-news" ).carousel('prev') } 
-			);
-		}
-
 		$(".video").click(function () {
 			var theModal = $(this).data("target"),
 			videoSRC = $(this).attr("data-video");
