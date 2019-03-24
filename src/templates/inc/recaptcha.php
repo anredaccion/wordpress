@@ -1,7 +1,7 @@
 <?php
 
 function anred_validate_recaptcha() {
-	if ( isset( $_POST['g-recaptcha-response'] ) == true && !get_option( 'anred_recaptcha_secret' ) ) {
+	if ( isset( $_POST['g-recaptcha-response'] ) == true && get_option( 'anred_recaptcha_secret' ) ) {
 		$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
 			'method' => 'POST',
 			'body'   => array(
