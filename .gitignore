@@ -3,6 +3,11 @@ build/
 dist/
 node_modules/
 vendor/
+wordpress/database/*
+wordpress/content/*
+wordpress/mysql-dump/*
+
 composer.lock
 package-lock.json
 .env
+.wakatime-project
